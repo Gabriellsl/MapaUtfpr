@@ -3,12 +3,11 @@
   <persistence-unit name="TrioHibernate" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysqldb.cij0jflzjtfd.us-east-2.rds.amazonaws.com"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysqldb.cij0jflzjtfd.us-east-2.rds.amazonaws.com:3306/mapautf"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="my$SQL#123"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>
