@@ -6,7 +6,8 @@
 package com.utf.grw.utfmaps.web.filter;
 
 import com.utf.grw.utfmaps.util.ConexaoHibernate;
-import java.io.IOException;
+import com.utf.grw.utfmaps.util.Logger;
+import java.util.Date;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -25,16 +26,24 @@ public class HibernateConnectionFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         ConexaoHibernate.getInstance();
+        
+        try {
+            int a = 50/0;
+        } catch (Exception e) {
+
+            Logger.logAndPersist(this.getClass(), e.getMessage());
+        }
+        
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain){
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void destroy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
