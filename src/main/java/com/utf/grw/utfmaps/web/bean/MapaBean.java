@@ -1,5 +1,7 @@
 
 package com.utf.grw.utfmaps.web.bean;
+	
+
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -12,7 +14,6 @@ public class MapaBean {
     
     public void teste(){
         System.out.println("Testando...");
-        JOptionPane.showMessageDialog(null, "Eeeita !");
     }
     
 }
