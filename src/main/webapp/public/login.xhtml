@@ -5,14 +5,14 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
     <!-- Removendo head e body e adicionando facelets -->
-    <ui:composition template="/templates/externa.xhtml">
+   
     <!--
     <h:head>
 	<title>Login</title>
     </h:head>
     <h:body>
     -->
-    <ui:define name="corpo">
+    
 	<h:panelGroup rendered="#{!empty param.login_error}"> 
 		<span style="color:red"> Erro ao efetuar o login.</span><br />
 		<br/>
@@ -36,6 +36,5 @@
 	</script>
 	</form>
     <!--</h:body> -->
-    </ui:define>
-    </ui:composition>
+    
 </html>
