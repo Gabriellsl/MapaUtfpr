@@ -20,7 +20,7 @@ import javax.servlet.annotation.WebFilter;
  *
  * @author Boniolo
  */
-@WebFilter(urlPatterns = {"*.xhtml"})
+@WebFilter(urlPatterns = {"*.jsf"})
 public class HibernateConnectionFilter implements Filter{
 
     @Override
