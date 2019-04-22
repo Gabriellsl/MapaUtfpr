@@ -1,6 +1,9 @@
 
 package com.utf.grw.utfmaps.modelo.usuario;
 
+import com.utf.grw.utfmaps.modelo.permissao.Permissao;
+import java.util.List;
+
 
 
 
@@ -51,5 +54,9 @@ public class UsuarioRN {
             System.err.println(ex.getMessage());
         }
         return null;
+    }
+    
+    public List<Usuario> listar(){
+        return this.usuarioDAO.listar();
     }
 }
