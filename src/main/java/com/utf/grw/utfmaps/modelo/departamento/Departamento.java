@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
  *
  * @author ALUNO
  */
+
 @Entity
 @NamedQuery(name="Departamento.findAll", query="SELECT d FROM Departamento d")
 public class Departamento {
@@ -33,20 +34,20 @@ public class Departamento {
     private String horaAbre;
     @Column(name="DEP_HORAFECHA")
     private String horaFecha;
-    @Column(name="DEP_INDICE")
-    private int indice;
+    @Column(name="DEP_LOCALIZACAO")
+    private String localizacao;
     
-    @OneToMany(/*mappedBy = "Departamento",*/ cascade = CascadeType.REMOVE)
-    private List<Sugestao> sugestoes;
+//    @OneToMany(/*mappedBy = "Departamento",*/ cascade = CascadeType.REMOVE)
+//    private List<Sugestao> sugestoes;
     
-    public Departamento(String nomeDep,String nomeDepExt, String descricao, String responsavel, String horaAbre, String horaFecha, int indice) {
-        this.nomeDep = nomeDep;
-        this.descricao = descricao;
-        this.responsavel = responsavel;
-        this.horaAbre = horaAbre;
-        this.horaFecha = horaFecha;
-        this.nomeDepExt = nomeDepExt;
-        this.indice = indice;
+    public Departamento(/*String nomeDep,String nomeDepExt, String descricao, String responsavel, String horaAbre, String horaFecha, int indice*/) {
+//        this.nomeDep = nomeDep;
+//        this.descricao = descricao;
+//        this.responsavel = responsavel;
+//        this.horaAbre = horaAbre;
+//        this.horaFecha = horaFecha;
+//        this.nomeDepExt = nomeDepExt;
+//        this.indice = indice;
     }
 
     public Long getIdDepartamento() {
@@ -104,21 +105,31 @@ public class Departamento {
     public void setNomeDepExt(String nomeDepExt) {
         this.nomeDepExt = nomeDepExt;
     }
-
-    public int getIndice() {
-        return indice;
-    }
-
-    public void setIndice(int indice) {
-        this.indice = indice;
-    }
     
-    public List<Sugestao> getSugestoes() {
-        return sugestoes;
+    
+
+//    public int getIndice() {;
+//        return indice;
+//    }
+//
+//    public void setIndice(int indice) {
+//        this.indice = indice;
+//    }
+    
+//    public List<Sugestao> getSugestoes() {;
+//        return sugestoes;
+//    }
+//
+//    public void setSugestoes(List<Sugestao> sugestoes) {
+//        this.sugestoes = sugestoes;
+//    }
+
+    public String getLocalizacao() {
+        return localizacao;
     }
 
-    public void setSugestoes(List<Sugestao> sugestoes) {
-        this.sugestoes = sugestoes;
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
     }
     
 }
