@@ -13,31 +13,73 @@
 
         <p:messages autoUpdate="true" showDetail="true"></p:messages>
         <p:fieldset legend="Criação">
-            <h:form id="create">     
+            <h:form id="create">    
+                <h:inputHidden value="#{departamentoBean.departamento.idDepartamento}" />
                 <p:panelGrid columns="2" >
-                    <h:outputLabel value="Nome"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.nomeDep}"></p:inputText>
 
-                    <h:outputLabel value="Nome extenso"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.nomeDepExt}"></p:inputText>
+                    
+                    
 
-                    <h:outputLabel value="Descrição"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.descricao}"></p:inputText>
+                        <h:outputLabel value="Nome"></h:outputLabel>
+                        <p:inputText value="#{departamentoBean.departamento.nomeDep}"></p:inputText>
 
-                    <h:outputLabel value="Abertura"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.horaAbre}" ></p:inputText>
+                        <h:outputLabel value="Nome extenso"></h:outputLabel>
+                        <p:inputText value="#{departamentoBean.departamento.nomeDepExt}"></p:inputText>
 
-                    <h:outputLabel value="Fechamento"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.horaFecha}" ></p:inputText>
+                        <h:outputLabel value="Descrição"></h:outputLabel>
+                        <p:inputText value="#{departamentoBean.departamento.descricao}"></p:inputText>
 
-                    <h:outputLabel value="Bloco"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.localizacao}" ></p:inputText>
+                        <h:outputLabel value="Abertura"></h:outputLabel>
+                        <p:inputText value="#{departamentoBean.departamento.horaAbre}" ></p:inputText>
 
-                    <h:outputLabel value="Responsável"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.responsavel}" ></p:inputText>
+                        <h:outputLabel value="Fechamento"></h:outputLabel>
+                        <p:inputText value="#{departamentoBean.departamento.horaFecha}" ></p:inputText>
 
-                    <h:commandButton action="#{departamentoBean.create}" value="Salvar"/>
-                </p:panelGrid>
+                        <h:outputLabel value="Bloco"></h:outputLabel>
+                        <p:inputText value="#{departamentoBean.departamento.localizacao}" ></p:inputText>
+
+                        <h:outputLabel value="Responsável"></h:outputLabel>
+                        <p:inputText value="#{departamentoBean.departamento.responsavel}" ></p:inputText>
+
+
+
+
+                        <h:outputLabel value="Usuarios"></h:outputLabel>
+                        <p:pickList id="PojoPickList" 
+                                    value="#{departamentoBean.usus}" 
+                                    var="usuario" 
+                                    effect="bounce"
+                                    itemValue="#{usuario}" 
+                                    itemLabel="#{usuario.nome}" 
+                                    showCheckbox="true"
+                                    showSourceFilter="true" 
+                                    showTargetFilter="true" 
+                                    filterMatchMode="contains" 
+                                    converter="entityConverter"
+                                    >
+
+                            <f:facet name="sourceCaption">Disponível</f:facet>
+                            <f:facet name="targetCaption">Inicial</f:facet>
+
+
+
+<!--                        <p:ajax event="transfer" listener="#{usuarioBean.onTransfer}" update="msg" />
+                        <p:ajax event="select" listener="#{usuarioBean.onSelect}" update="msg"/>
+                        <p:ajax event="unselect" listener="#{usuarioBean.onUnselect}" update="msg"/>
+                        <p:ajax event="reorder" listener="#{usuarioBean.onReorder}" update="msg"/>-->
+
+
+
+                            <p:column style="width:85%;">
+                                <h:outputText value="#{usuario.nome}" />
+                            </p:column>
+                        </p:pickList>
+
+
+
+
+                        <h:commandButton action="#{departamentoBean.create}" value="Salvar"/>
+                    </p:panelGrid>
             </h:form>
         </p:fieldset>
 
@@ -98,13 +140,13 @@
 
             </h:form>
         </p:fieldset>
-        
+
         <p:fieldset legend="Atualização">
             <h:form id="update">
                 <h:inputHidden value="#{departamentoBean.selecionado.idDepartamento}" />
                 <p:panelGrid columns="2" >
 
-                    
+
                     <h:outputLabel value="Nome"></h:outputLabel>
                     <p:inputText value="#{departamentoBean.selecionado.nomeDep}"></p:inputText>
 
@@ -125,6 +167,30 @@
 
                     <h:outputLabel value="Responsável"></h:outputLabel>
                     <p:inputText value="#{departamentoBean.selecionado.responsavel}" ></p:inputText>
+
+
+
+                    <p:pickList id="PojoPickList2" 
+                                value="#{departamentoBean.usus2}" 
+                                var="usuario" 
+                                effect="bounce"
+                                itemValue="#{usuario}" 
+                                itemLabel="#{usuario.nome}" 
+                                showCheckbox="true"
+                                showSourceFilter="true" 
+                                showTargetFilter="true" 
+                                filterMatchMode="contains" 
+                                converter="entityConverter"
+                                >
+
+                        <f:facet name="sourceCaption">Disponível</f:facet>
+                        <f:facet name="targetCaption">Inicial</f:facet>
+
+                        <p:column style="width:85%;">
+                            <h:outputText value="#{usuario.nome}" />
+                        </p:column>
+                    </p:pickList>
+
 
                     <p:commandButton value="Atualizar" action="#{departamentoBean.update}" type="button">
                         <f:ajax execute="@form" render=":create :update :listAll"/>

@@ -1,5 +1,6 @@
 package com.utf.grw.utfmaps.modelo.usuario;
 
+import com.utf.grw.utfmaps.modelo.departamento.Departamento;
 import com.utf.grw.utfmaps.modelo.permissao.Permissao;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario {
 
     @Id
@@ -38,14 +39,11 @@ public class Usuario {
 //    @ManyToMany(targetEntity = Permissao.class);
 //    @JoinTable(name = "Usuario_Permissao", joinColumns = { @JoinColumn(name = "") })
 //    public List<Usuario_Permissao> usuario_permissao;
-    
-    
-    
-    	@ManyToMany(targetEntity = Permissao.class)
-	@JoinTable(name = "Usuario_Permissao", joinColumns = { @JoinColumn(name = "USU_FK_ID", referencedColumnName = "USU_ID") }, inverseJoinColumns = { @JoinColumn(name = "PER_FK_ID", referencedColumnName = "PER_ID") })
-	private List<Permissao> permissoes;
-    
-    
+    @ManyToMany(targetEntity = Departamento.class)
+    @JoinTable(name = "Departamento_Usuario", joinColumns = {
+        @JoinColumn(name = "USU_FK_ID", referencedColumnName = "USU_ID")}, inverseJoinColumns = {
+        @JoinColumn(name = "DEP_FK_ID", referencedColumnName = "DEP_ID")})
+    private List<Departamento> departamentos;
 
     public Long getIdUsuario() {
         return idUsuario;
@@ -87,14 +85,12 @@ public class Usuario {
         this.ativo = ativo;
     }
 
-    public List<Permissao> getPermissoes() {
-        return permissoes;
+    public List<Departamento> getDepartamentos() {
+        return departamentos;
     }
 
-    public void setPermissoes(List<Permissao> permissoes) {
-        this.permissoes = permissoes;
+    public void setDepartamentos(List<Departamento> departamentos) {
+        this.departamentos = departamentos;
     }
-    
-    
 
 }
