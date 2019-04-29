@@ -7,11 +7,11 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 	<http auto-config="true"> 
-		<intercept-url pattern="/public/**" access="ROLE_NUAPE" /> 
-		<form-login login-page="/login.xhtml" 
+                <intercept-url pattern="/public/**" access="ROLE_NUAPE" />
+                <form-login login-page="/login.xhtml" 
 			always-use-default-target="true" 
 			default-target-url="/index.html"
-			authentication-failure-url="/index.html" /><!--
+                                                        /><!--
 		<logout/> -->
 		<remember-me /> 
 	</http>
