@@ -59,4 +59,8 @@ public class UsuarioRN {
     public List<Usuario> listar(){
         return this.usuarioDAO.listar();
     }
+
+    public Usuario refresh(Usuario selecionado) {
+        return this.usuarioDAO.refresh(selecionado);
+    }
 }

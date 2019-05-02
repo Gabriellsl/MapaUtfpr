@@ -15,5 +15,7 @@ public interface DepartamentoDAO {
     Departamento buscarPorId(Long codigo);
     List<Departamento> listar();
     Departamento buscarPorNome(String nomeDep);
+
+    public Departamento refresh(Departamento selecionado);
     
 }

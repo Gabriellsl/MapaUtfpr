@@ -156,6 +156,10 @@ public class DepartamentoBean {
     }
 
     public void mudarParaEdita() {
+        
+        DepartamentoRN departamentoRN = new DepartamentoRN();
+        this.selecionado = departamentoRN.refresh(this.selecionado);
+        
         this.UsuarioOrigem2 = this.getUsuarios();
         this.setUsuarioDestino2(this.selecionado.getUsuarios());
         for (Usuario usuario : this.selecionado.getUsuarios()) {

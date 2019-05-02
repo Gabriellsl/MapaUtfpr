@@ -13,7 +13,7 @@ public class DepartamentoDAOHibernate implements DepartamentoDAO {
 
     EntityManager manager;
 
-    public DepartamentoDAOHibernate() {
+    public DepartamentoDAOHibernate() { 
         manager = ConexaoHibernate.getInstance();
     }
     
@@ -69,5 +69,13 @@ public class DepartamentoDAOHibernate implements DepartamentoDAO {
         Departamento departamento = (Departamento)query.getSingleResult();
         return departamento;
     }
+    
+        @Override
+    public Departamento refresh(Departamento departamento){
+        manager.refresh(departamento);
+        return departamento;
+    }
+    
+
     
 }

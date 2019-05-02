@@ -110,6 +110,8 @@ public class UsuarioBean {
         this.usuario = usuario;
     }
 
+    
+    
     public List<Usuario> getAllUsuarios() {
         if (isBusca() == false) {
             mudarParaBusca();
@@ -118,7 +120,6 @@ public class UsuarioBean {
             UsuarioRN usuarioRN = new UsuarioRN();
             this.lista = usuarioRN.listar();
         }
-
         return this.lista;
     }
 
@@ -165,6 +166,14 @@ public class UsuarioBean {
     }
 
     public void mudarParaEdita() {
+        /*System.out.println("usuario: "+this.selecionado.getNome()+" - codigo "+this.selecionado+"\n Departamentos: ");
+        for (Departamento departamento : this.selecionado.getDepartamentos()) {
+            System.out.println(departamento.getNomeDep() + " - codigo: "+departamento);
+        }
+        */
+        UsuarioRN usuarioRN = new UsuarioRN();
+        this.selecionado = usuarioRN.refresh(this.selecionado);
+        
         this.DepartamentoOrigem2 = this.getDepartamentos();
         this.setDepartamentoDestino2(this.selecionado.getDepartamentos());
         for (Departamento departamento : this.selecionado.getDepartamentos()) {

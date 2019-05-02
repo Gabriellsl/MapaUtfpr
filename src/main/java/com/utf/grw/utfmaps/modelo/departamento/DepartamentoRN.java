@@ -4,6 +4,8 @@ import java.util.List;
 
 
 public class DepartamentoRN {
+
+
     
     private DepartamentoDAO departamentoDAO;
     
@@ -47,6 +49,10 @@ public class DepartamentoRN {
     
     public List<Departamento> listar(){
         return this.departamentoDAO.listar();
+    }
+    
+        public Departamento refresh(Departamento selecionado) {
+         return this.departamentoDAO.refresh(selecionado);
     }
     
 }
