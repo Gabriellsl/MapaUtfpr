@@ -1,26 +1,14 @@
 package com.utf.grw.utfmaps.modelo.sugestao;
 
 import com.utf.grw.utfmaps.modelo.departamento.Departamento;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
-@Entity
 public class Sugestao {
-    @Id
-    @GeneratedValue
-    @Column(name="SUG_ID")
     private Long idServidor;
     
-    @Column(name="SUG_DESC")
     private String sugestao;
     
-    @Column(name="SUG_NOME")
     private String nome;
     
-    @ManyToOne
     private Departamento dep;
 
     public Sugestao(String sugestao, String nome, Departamento dep) {
