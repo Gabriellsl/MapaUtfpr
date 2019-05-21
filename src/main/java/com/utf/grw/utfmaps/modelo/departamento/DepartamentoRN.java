@@ -1,5 +1,7 @@
 package com.utf.grw.utfmaps.modelo.departamento;
 
+import java.util.List;
+
 
 public class DepartamentoRN {
     
@@ -16,6 +18,7 @@ public class DepartamentoRN {
             System.err.println(ex.getMessage());
         }
     }
+    
     
     public void atualizar(Departamento departamento){
         try {
@@ -40,6 +43,10 @@ public class DepartamentoRN {
             System.err.println(ex.getMessage());
         }
         return null;
+    }
+    
+    public List<Departamento> listar(){
+        return this.departamentoDAO.listar();
     }
     
 }
