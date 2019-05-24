@@ -47,6 +47,15 @@ public class DepartamentoRN {
         return null;
     }
     
+        public List<Departamento> buscarPorLocalizacao(String bloco){
+        try {
+            return this.departamentoDAO.buscarPorLocalizacao(bloco);
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
+        return null;
+    }
+    
     public List<Departamento> listar(){
         return this.departamentoDAO.listar();
     }

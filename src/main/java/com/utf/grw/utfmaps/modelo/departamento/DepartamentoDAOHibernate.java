@@ -70,6 +70,17 @@ public class DepartamentoDAOHibernate implements DepartamentoDAO {
         return departamento;
     }
     
+    @Override
+    public List<Departamento> buscarPorLocalizacao(String bloco) {
+        String jpql = "SELECT d FROM Departamento d WHERE d.localizacao = ?1";
+        Query query = manager.createQuery(jpql);
+        query.setParameter(1, bloco);
+        List<Departamento> departamentos = query.getResultList();
+        return departamentos;
+    }
+    
+    
+    
         @Override
     public Departamento refresh(Departamento departamento){
         manager.refresh(departamento);
