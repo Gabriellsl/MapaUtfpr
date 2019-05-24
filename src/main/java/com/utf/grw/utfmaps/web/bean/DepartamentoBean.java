@@ -7,6 +7,7 @@ package com.utf.grw.utfmaps.web.bean;
 
 import com.utf.grw.utfmaps.modelo.departamento.Departamento;
 import com.utf.grw.utfmaps.modelo.departamento.DepartamentoRN;
+import com.utf.grw.utfmaps.util.Logger;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -48,6 +49,7 @@ public class DepartamentoBean {
         try {
             departamentoRN.excluir(this.selecionado);
         } catch (Error e) {
+            Logger.save(this.getClass(), e.getMessage());
             System.out.println("Houve um erro ao excluir um departamento: " + e);
         }
         this.lista = null;

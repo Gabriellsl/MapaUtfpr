@@ -10,6 +10,7 @@ import com.utf.grw.utfmaps.modelo.sugestao.SugestaoRN;
 public class SugestaoControle {
     
     public void salvarSugestao(Sugestao sugestao) {
-        SugestaoRN.salvar(sugestao);
+        SugestaoRN sugestaoRN = new SugestaoRN();
+        sugestaoRN.salvar(sugestao);
     }   
 }

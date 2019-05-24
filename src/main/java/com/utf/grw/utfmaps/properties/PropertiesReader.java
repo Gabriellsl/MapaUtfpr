@@ -6,9 +6,10 @@
 package com.utf.grw.utfmaps.properties;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 
 /**
  *
@@ -35,7 +36,18 @@ public class PropertiesReader {
     
     public static Properties getProp() throws IOException{
         Properties prop = new Properties();
-        FileInputStream file = new FileInputStream("C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\MapaUtfpr\\src\\main\\java\\com\\utf\\grw\\utfmaps\\properties\\conectionapi.properties");
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        ServletContext sc = (ServletContext) context.getExternalContext().getContext();
+
+        String path = sc.getRealPath("");
+
+        path = path.split("target")[0].concat("src\\main\\java\\com\\utf\\grw\\utfmaps\\properties\\conectionapi.properties");
+                
+        
+        
+        FileInputStream file = new FileInputStream(path); 
         prop.load(file);
         return prop;
     }

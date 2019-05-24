@@ -8,7 +8,7 @@ import com.utf.grw.utfmaps.util.SendData;
  * @author Boniolo
  */
 public class SugestaoRN {
-    public static void salvar(Sugestao sugestao) {
+    public void salvar(Sugestao sugestao) {
         try {
             PropertiesReader pr = new PropertiesReader();
             SendData sd = new SendData(pr.getURI_SUGESTAO(), pr.getTOKEN_SUGESTAO());

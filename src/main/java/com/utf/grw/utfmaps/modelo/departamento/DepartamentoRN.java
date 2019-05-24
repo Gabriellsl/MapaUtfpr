@@ -1,5 +1,6 @@
 package com.utf.grw.utfmaps.modelo.departamento;
 
+import com.utf.grw.utfmaps.util.Logger;
 import java.util.List;
 
 
@@ -15,6 +16,7 @@ public class DepartamentoRN {
         try {
             this.departamentoDAO.salvar(departamento);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
@@ -24,6 +26,7 @@ public class DepartamentoRN {
         try {
             this.departamentoDAO.atualizar(departamento);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
@@ -32,6 +35,7 @@ public class DepartamentoRN {
         try {
             this.departamentoDAO.excluir(departamento);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
@@ -40,13 +44,22 @@ public class DepartamentoRN {
         try {
             return this.departamentoDAO.buscarPorNome(nomeDep);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
         return null;
     }
     
     public List<Departamento> listar(){
-        return this.departamentoDAO.listar();
+        try{
+            return this.departamentoDAO.listar();
+        }catch(Exception ex){
+            Logger.save(this.getClass(), ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+        return null;
+        
+        
     }
     
 }

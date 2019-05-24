@@ -24,5 +24,17 @@ public class Logger {
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(Logger.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } 
+    }
+    
+    public static void save(String clazz, String error){
+        Log log = new Log(clazz, error);
+        try {
+            PropertiesReader pr = new PropertiesReader();
+            SendData sd = new SendData(pr.getURI_LOGGER(),pr.getTOKEN_LOGGER());
+            sd.POST(log,Log.class);
+        } catch (Exception ex) {
+            java.util.logging.Logger.getLogger(Logger.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

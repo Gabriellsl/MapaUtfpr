@@ -11,6 +11,9 @@ public class Sugestao {
     
     private Departamento dep;
 
+    public Sugestao() {
+    }
+    
     public Sugestao(String sugestao, String nome, Departamento dep) {
         this.sugestao = sugestao;
         this.nome = nome;

@@ -18,10 +18,16 @@ import javax.persistence.Id;
 
 public class Log implements Serializable {
 
+    public Log(String clazz, String error) {
+        this.clazz = clazz;
+        this.error = error;
+    }
+
     public Log(Class clazz, String error) {
         this.clazz = clazz.getName();
         this.error = error;
     }
+         
     
     private String clazz;
     private String error;
