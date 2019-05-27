@@ -16,26 +16,21 @@ import javax.persistence.Id;
  * @author Boniolo
  */
 
-@Entity
 public class Log implements Serializable {
+
+    public Log(String clazz, String error) {
+        this.clazz = clazz;
+        this.error = error;
+    }
 
     public Log(Class clazz, String error) {
         this.clazz = clazz.getName();
         this.error = error;
     }
+         
     
-    @GeneratedValue @Id
-    @Column(name = "LOG_ID")
-    private long idLog;
-    
-    @Column(name = "LOG_CLASS")
     private String clazz;
-    
-    @Column(name = "LOG_ERROR")
     private String error;
-    
-    @Column(name = "LOG_CREATEDAT")
-    private String createdAt;
 
     public String getClazz() {
         return clazz;
@@ -52,17 +47,4 @@ public class Log implements Serializable {
     public void setError(String error) {
         this.error = error;
     }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-    
-    
-    
-    
-    
 }
