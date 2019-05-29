@@ -7,6 +7,8 @@ package com.utf.grw.utfmaps.util;
 
 import com.utf.grw.utfmaps.modelo.usuario.Usuario;
 import com.utf.grw.utfmaps.modelo.usuario.UsuarioRN;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
@@ -14,13 +16,18 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * @author boniolo
  */
 public class UserContext {
-    public static Usuario getUser(){
+    
+    private final static Usuario user = null;
+    
+    
+    public static Usuario getUserContext(){
         
-        UsuarioRN usuarioRN = new UsuarioRN();
-        
-        String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        Usuario user = usuarioRN.buscar(login);
-        
+        if(user == null){
+            UsuarioRN usuarioRN = new UsuarioRN();
+            String login = SecurityContextHolder.getContext().getAuthentication().getName();
+            Usuario user = usuarioRN.buscar(login);
+            return user;
+        }       
         return user;
     }
 }

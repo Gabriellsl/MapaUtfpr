@@ -8,7 +8,7 @@
    
     <bean id="financeiroDataSource" class="org.apache.commons.dbcp.BasicDataSource" 
     p:driverClassName="com.mysql.jdbc.Driver"
-    p:url="jdbc:mysql://mysqldb.cij0jflzjtfd.us-east-2.rds.amazonaws.com:3306/mapautf"
+    p:url="jdbc:mysql://localhost:3306/mapautf"
     p:username="root"
-    p:password="my$SQL#123"/> 
+    p:password=""/> 
 </beans>
