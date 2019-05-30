@@ -30,6 +30,7 @@ public class SendData {
     }
     
     public void POST(Object obj, Class clazz){
+        System.out.println(new Gson().toJson(obj, clazz));
         try {
             this.post.setEntity(new StringEntity(new Gson().toJson(obj, clazz)));
             this.httpClient.execute(this.post);

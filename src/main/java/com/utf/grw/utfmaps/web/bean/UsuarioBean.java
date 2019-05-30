@@ -5,8 +5,8 @@
  */
 package com.utf.grw.utfmaps.web.bean;
 
-import com.utf.grw.utfmaps.modelo.permissao.Permissao;
-import com.utf.grw.utfmaps.modelo.permissao.PermissaoRN;
+import com.utf.grw.utfmaps.modelo.departamento.Departamento;
+import com.utf.grw.utfmaps.modelo.departamento.DepartamentoRN;
 import com.utf.grw.utfmaps.modelo.usuario.Usuario;
 import com.utf.grw.utfmaps.modelo.usuario.UsuarioRN;
 import com.utf.grw.utfmaps.util.Logger;
@@ -32,28 +32,30 @@ import org.primefaces.model.DualListModel;
 public class UsuarioBean {
     //picklist
 
-    private DualListModel<Permissao> perms;
-    private DualListModel<Permissao> perms2;
+    private DualListModel<Departamento> deps;
+    private DualListModel<Departamento> departamentos2;
 
     @PostConstruct
-    public void init() {
+    public void init() {  
+        
+        this.lista = null;
         //Cities
-        this.PermissaoOrigem = new ArrayList<Permissao>();
-        this.PermissaoDestino = new ArrayList<Permissao>();
+        this.DepartamentoOrigem = new ArrayList<Departamento>();
+        this.DepartamentoDestino = new ArrayList<Departamento>();
 
-        this.PermissaoOrigem2 = new ArrayList<Permissao>();
-        this.PermissaoDestino2 = new ArrayList<Permissao>();
+        this.DepartamentoOrigem2 = new ArrayList<Departamento>();
+        this.DepartamentoDestino2 = new ArrayList<Departamento>();
 
-        PermissaoOrigem = this.getPermissoes();
-        perms = new DualListModel<Permissao>(PermissaoOrigem, PermissaoDestino);
-        perms2 = new DualListModel<Permissao>(PermissaoOrigem2, PermissaoDestino2);
+        DepartamentoOrigem = this.getDepartamentos();
+        deps = new DualListModel<Departamento>(DepartamentoOrigem, DepartamentoDestino);
+        departamentos2 = new DualListModel<Departamento>(DepartamentoOrigem2, DepartamentoDestino2);
     }
 
-    List<Permissao> PermissaoOrigem;
-    List<Permissao> PermissaoDestino;
+    List<Departamento> DepartamentoOrigem;
+    List<Departamento> DepartamentoDestino;
 
-    List<Permissao> PermissaoOrigem2;
-    List<Permissao> PermissaoDestino2;
+    List<Departamento> DepartamentoOrigem2;
+    List<Departamento> DepartamentoDestino2;
 
     private Usuario selecionado = new Usuario();
     private Usuario editado = new Usuario();
@@ -67,10 +69,10 @@ public class UsuarioBean {
     }
 
     public void create() {
-        List<Permissao> permissoes = new ArrayList<Permissao>();
-        permissoes = this.getPermissoes();
-        System.out.println("Nome da primeira permissao: " + permissoes.get(0).getNomePer());
-        this.usuario.setPermissoes(this.perms.getTarget());
+        List<Departamento> departamentos = new ArrayList<Departamento>();
+        departamentos = this.getDepartamentos();
+        System.out.println("Nome da primeira Departamento: " + departamentos.get(0).getNomeDep());
+        this.usuario.setDepartamentos(this.deps.getTarget());
 
         mudarParaBusca();
         UsuarioRN usuarioRN = new UsuarioRN();
@@ -94,7 +96,7 @@ public class UsuarioBean {
 
     public void update() {
         
-        this.selecionado.setPermissoes(this.perms2.getTarget());
+        this.selecionado.setDepartamentos(this.getdepartamentos2().getTarget());
         //mudarParaEdita();
         UsuarioRN usuarioRN = new UsuarioRN();
         usuarioRN.atualizar(this.selecionado);
@@ -110,6 +112,8 @@ public class UsuarioBean {
         this.usuario = usuario;
     }
 
+    
+    
     public List<Usuario> getAllUsuarios() {
         if (isBusca() == false) {
             mudarParaBusca();
@@ -118,13 +122,12 @@ public class UsuarioBean {
             UsuarioRN usuarioRN = new UsuarioRN();
             this.lista = usuarioRN.listar();
         }
-
         return this.lista;
     }
 
-    public List<Permissao> getPermissoes() {
-        PermissaoRN permissaoRN = new PermissaoRN();
-        return permissaoRN.listar();
+    public List<Departamento> getDepartamentos() {
+        DepartamentoRN departamentoRN = new DepartamentoRN();
+        return departamentoRN.listar();
     }
 
     public void setLista(List<Usuario> lista) {
@@ -165,12 +168,21 @@ public class UsuarioBean {
     }
 
     public void mudarParaEdita() {
-        this.PermissaoOrigem2 = this.getPermissoes();
-        this.PermissaoDestino2 = this.selecionado.getPermissoes();
-        for (Permissao permissao : this.selecionado.getPermissoes()) {
-            this.PermissaoOrigem2.remove(permissao);
+        /*System.out.println("usuario: "+this.selecionado.getNome()+" - codigo "+this.selecionado+"\n Departamentos: ");
+        for (Departamento departamento : this.selecionado.getDepartamentos()) {
+            System.out.println(departamento.getNomeDep() + " - codigo: "+departamento);
         }
-        this.perms2 = new DualListModel<Permissao>(this.PermissaoOrigem2, this.PermissaoDestino2);
+        */
+        UsuarioRN usuarioRN = new UsuarioRN();
+        this.selecionado = usuarioRN.refresh(this.selecionado);
+        
+        this.DepartamentoOrigem2 = this.getDepartamentos();
+        this.setDepartamentoDestino2(this.selecionado.getDepartamentos());
+        for (Departamento departamento : this.selecionado.getDepartamentos()) {
+            this.DepartamentoOrigem2.remove(departamento);
+        }
+        this.departamentos2.setSource(this.DepartamentoOrigem2);
+        this.departamentos2.setTarget(this.DepartamentoDestino2);
         estadoTela = "editar";
     }
 
@@ -178,52 +190,52 @@ public class UsuarioBean {
         estadoTela = "buscar";
     }
 
-    public DualListModel<Permissao> getPerms() {
-        return perms;
+    public DualListModel<Departamento> getDeps() {
+        return deps;
     }
 
-    public void setPerms(DualListModel<Permissao> perms) {
-        this.perms = perms;
+    public void setDeps(DualListModel<Departamento> deps) {
+        this.deps = deps;
     }
 
-    public List<Permissao> getPermissaoOrigem() {
-        return PermissaoOrigem;
+    public List<Departamento> getDepartamentoOrigem() {
+        return DepartamentoOrigem;
     }
 
-    public void setPermissaoOrigem(List<Permissao> PermissaoOrigem) {
-        this.PermissaoOrigem = PermissaoOrigem;
+    public void setDepartamentoOrigem(List<Departamento> DepartamentoOrigem) {
+        this.DepartamentoOrigem = DepartamentoOrigem;
     }
 
-    public List<Permissao> getPermissaoDestino() {
-        return PermissaoDestino;
+    public List<Departamento> getDepartamentoDestino() {
+        return DepartamentoDestino;
     }
 
-    public void setPermissaoDestino(List<Permissao> PermissaoDestino) {
-        this.PermissaoDestino = PermissaoDestino;
+    public void setDepartamentoDestino(List<Departamento> DepartamentoDestino) {
+        this.DepartamentoDestino = DepartamentoDestino;
     }
 
-    public DualListModel<Permissao> getPerms2() {
-        return perms2;
+    public DualListModel<Departamento> getdepartamentos2() {
+        return this.departamentos2;
     }
 
-    public void setPerms2(DualListModel<Permissao> perms2) {
-        this.perms2 = perms2;
+    public void setdepartamentos2(DualListModel<Departamento> deps2) {
+        this.departamentos2 = deps2;
     }
 
-    public List<Permissao> getPermissaoOrigem2() {
-        return PermissaoOrigem2;
+    public List<Departamento> getDepartamentoOrigem2() {
+        return DepartamentoOrigem2;
     }
 
-    public void setPermissaoOrigem2(List<Permissao> PermissaoOrigem2) {
-        this.PermissaoOrigem2 = PermissaoOrigem2;
+    public void setDepartamentoOrigem2(List<Departamento> DepartamentoOrigem2) {
+        this.DepartamentoOrigem2 = DepartamentoOrigem2;
     }
 
-    public List<Permissao> getPermissaoDestino2() {
-        return PermissaoDestino2;
+    public List<Departamento> getDepartamentoDestino2() {
+        return DepartamentoDestino2;
     }
 
-    public void setPermissaoDestino2(List<Permissao> PermissaoDestino2) {
-        this.PermissaoDestino2 = PermissaoDestino2;
+    public void setDepartamentoDestino2(List<Departamento> DepartamentoDestino2) {
+        this.DepartamentoDestino2 = DepartamentoDestino2;
     }
 
 }

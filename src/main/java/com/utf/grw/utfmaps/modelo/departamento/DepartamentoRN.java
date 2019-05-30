@@ -5,6 +5,8 @@ import java.util.List;
 
 
 public class DepartamentoRN {
+
+
     
     private DepartamentoDAO departamentoDAO;
     
@@ -50,6 +52,15 @@ public class DepartamentoRN {
         return null;
     }
     
+        public List<Departamento> buscarPorLocalizacao(String bloco){
+        try {
+            return this.departamentoDAO.buscarPorLocalizacao(bloco);
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
+        return null;
+    }
+    
     public List<Departamento> listar(){
         try{
             return this.departamentoDAO.listar();
@@ -60,6 +71,10 @@ public class DepartamentoRN {
         return null;
         
         
+    }
+    
+        public Departamento refresh(Departamento selecionado) {
+         return this.departamentoDAO.refresh(selecionado);
     }
     
 }
