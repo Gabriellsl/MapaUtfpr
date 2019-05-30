@@ -14,21 +14,28 @@
     <h:body>
 
         <div class="sugestaoContainer">
-            <h:form>
-                <p:outputPanel>
-                    <div class="ui-grid sugestao">
+
+
+            <p:outputPanel>
+                <div class="ui-grid sugestao">
+
+                    <div class="ui-grid-row space"></div>
+
+                    <h:form class="teste2">
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-1"></div>
                             <div class="ui-grid-col-10 sugInput"> 
-                                <p:inputTextarea style="width: 90%; height: 60%" value="#{sugestaoBean.sugestao.sugestao}" rows="6" cols="33" />
+                                <p:inputTextarea class="sugText" style="width: 90%; height: 60%" value="#{sugestaoBean.sugestao.sugestao}" rows="6" cols="33" />
                                 <h:commandButton class="sugButton" action="#{sugestaoBean.salvar()}" value="Salvar"/>
 
                             </div>
                             <div class="ui-grid-col-1"></div>
                         </div>
-                    </div>
-                </p:outputPanel>
-            </h:form>
+                    </h:form>
+                </div>
+            </p:outputPanel>
+
+
         </div>
     </h:body>
 </html>
