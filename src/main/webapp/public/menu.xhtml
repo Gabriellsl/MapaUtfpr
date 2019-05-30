@@ -15,11 +15,14 @@ and open the template in the editor.
             .ui-stack {
                 z-index: 1000;
             }
+            .ui-stack > img{width: 70px;}
+            
         </style>
 
-        <p:stack icon="/resources/images/stack.png" expanded="true">
-            <p:menuitem value="mapa" icon="/resources/images/home.png" url="#"/>
-            <p:menuitem value="login" icon="/resources/images/music.png" url="#"/>
+        <p:stack icon="/resources/images/coruja.png" expanded="true">
+            <p:menuitem value="sugestoes" icon="/resources/images/hint.png" url="#"/>
+            <p:menuitem value="login" icon="/resources/images/music.png" url="http://localhost:8080/MapaUtfpr/public/login.xhtml#"/>
+            <p:menuitem value="mapa" icon="/resources/images/home.png" url="http://localhost:8080/MapaUtfpr/public/mapa.xhtml#"/>            
         </p:stack>
     </h:form>
 </html>

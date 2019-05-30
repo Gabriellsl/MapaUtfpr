@@ -1,8 +1,31 @@
-body, td, th {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 52px;
-}
 
 .teste{
     color: blue;
 }
+
+ /*ESTILO DO FOOTER*/
+
+.footerh{
+     color: #FFFFFF;
+     background-color: #000000;
+     text-align: center;
+     margin-bottom: 0px;
+     margin-top: 5px;
+}
+
+.margin{
+    margin-bottom: 0px;
+}
+
+/*ESTILO DO HEADER*/
+
+.headerrh{
+     color: #DAA520;
+     background-color: #000000;
+     margin-bottom: 20px;
+     margin-top: 0px;
+     text-align: center;
+}
+
+/*ESTILO DO MENU*/
+

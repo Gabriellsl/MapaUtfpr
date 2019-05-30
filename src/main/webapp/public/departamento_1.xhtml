@@ -6,133 +6,137 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <h:head>
-        <title>Departamento</title>
-    </h:head>
-    <h:body>
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="corpo">
+            <h:head>
+                <title>Departamento</title>
+            </h:head>
+            <h:body>
 
-        <p:messages autoUpdate="true" showDetail="true"></p:messages>
-        <p:fieldset legend="Criação">
-            <h:form id="create">     
-                <p:panelGrid columns="2" >
-                    <h:outputLabel value="Nome"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.nomeDep}"></p:inputText>
+                <p:messages autoUpdate="true" showDetail="true"></p:messages>
+                <p:fieldset legend="Criação">
+                    <h:form id="create">     
+                        <p:panelGrid columns="2" >
+                            <h:outputLabel value="Nome"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.departamento.nomeDep}"></p:inputText>
 
-                    <h:outputLabel value="Nome extenso"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.nomeDepExt}"></p:inputText>
+                            <h:outputLabel value="Nome extenso"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.departamento.nomeDepExt}"></p:inputText>
 
-                    <h:outputLabel value="Descrição"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.descricao}"></p:inputText>
+                            <h:outputLabel value="Descrição"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.departamento.descricao}"></p:inputText>
 
-                    <h:outputLabel value="Abertura"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.horaAbre}" ></p:inputText>
+                            <h:outputLabel value="Abertura"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.departamento.horaAbre}" ></p:inputText>
 
-                    <h:outputLabel value="Fechamento"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.horaFecha}" ></p:inputText>
+                            <h:outputLabel value="Fechamento"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.departamento.horaFecha}" ></p:inputText>
 
-                    <h:outputLabel value="Bloco"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.localizacao}" ></p:inputText>
+                            <h:outputLabel value="Bloco"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.departamento.localizacao}" ></p:inputText>
 
-                    <h:outputLabel value="Responsável"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.departamento.responsavel}" ></p:inputText>
+                            <h:outputLabel value="Responsável"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.departamento.responsavel}" ></p:inputText>
 
-                    <h:commandButton action="#{departamentoBean.create}" value="Salvar"/>
-                </p:panelGrid>
-            </h:form>
-        </p:fieldset>
+                            <h:commandButton action="#{departamentoBean.create}" value="Salvar"/>
+                        </p:panelGrid>
+                    </h:form>
+                </p:fieldset>
 
-        <p:fieldset legend="Listagem">
-            <h:form id="listAll">
-                <p:dataTable value="#{departamentoBean.all}" var="departamento" >
+                <p:fieldset legend="Listagem">
+                    <h:form id="listAll">
+                        <p:dataTable value="#{departamentoBean.all}" var="departamento" >
 
-                    <p:column headerText="ID" sortBy="#{departamento.idDepartamento}">
-                        <h:outputText value="#{departamento.idDepartamento}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="ID" sortBy="#{departamento.idDepartamento}">
+                                <h:outputText value="#{departamento.idDepartamento}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="Nome" sortBy="#{departamento.nomeDep}">
-                        <h:outputText value="#{departamento.nomeDep}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="Nome" sortBy="#{departamento.nomeDep}">
+                                <h:outputText value="#{departamento.nomeDep}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="Nome p extenso" sortBy="#{departamento.nomeDepExt}">
-                        <h:outputText value="#{departamento.nomeDepExt}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="Nome p extenso" sortBy="#{departamento.nomeDepExt}">
+                                <h:outputText value="#{departamento.nomeDepExt}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="descrição" sortBy="#{departamento.descricao}">
-                        <h:outputText value="#{departamento.descricao}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="descrição" sortBy="#{departamento.descricao}">
+                                <h:outputText value="#{departamento.descricao}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="Abertura" sortBy="#{departamento.horaAbre}">
-                        <h:outputText value="#{departamento.horaAbre}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="Abertura" sortBy="#{departamento.horaAbre}">
+                                <h:outputText value="#{departamento.horaAbre}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="Fechamento" sortBy="#{departamento.horaFecha}">
-                        <h:outputText value="#{departamento.horaFecha}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="Fechamento" sortBy="#{departamento.horaFecha}">
+                                <h:outputText value="#{departamento.horaFecha}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="Bloco" sortBy="#{departamento.localizacao}">
-                        <h:outputText value="#{departamento.localizacao}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="Bloco" sortBy="#{departamento.localizacao}">
+                                <h:outputText value="#{departamento.localizacao}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="Responsável" sortBy="#{departamento.responsavel}">
-                        <h:outputText value="#{departamento.responsavel}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="Responsável" sortBy="#{departamento.responsavel}">
+                                <h:outputText value="#{departamento.responsavel}"></h:outputText>
+                            </p:column>
 
-                    <p:column>
-                        <h:commandLink action="#{departamentoBean.mudarParaEdita()}" title="editar">
-                            <f:ajax execute="@this" render=":update" />
-                            <p:commandButton value="Editar" />
-                            <f:setPropertyActionListener target="#{departamentoBean.selecionado}" value="#{departamento}" />
-                        </h:commandLink>
-                    </p:column>
-                    <p:column>
-                        <h:commandLink action="#{departamentoBean.delete()}" title="excluir">
-                            <f:ajax execute="@this" render=":create :update :listAll" />
-                            <p:commandButton value="Deletar" />
-                            <f:setPropertyActionListener target="#{departamentoBean.selecionado}" value="#{departamento}" />
-                        </h:commandLink>
-                    </p:column>
+                            <p:column>
+                                <h:commandLink action="#{departamentoBean.mudarParaEdita()}" title="editar">
+                                    <f:ajax execute="@this" render=":update" />
+                                    <p:commandButton value="Editar" />
+                                    <f:setPropertyActionListener target="#{departamentoBean.selecionado}" value="#{departamento}" />
+                                </h:commandLink>
+                            </p:column>
+                            <p:column>
+                                <h:commandLink action="#{departamentoBean.delete()}" title="excluir">
+                                    <f:ajax execute="@this" render=":create :update :listAll" />
+                                    <p:commandButton value="Deletar" />
+                                    <f:setPropertyActionListener target="#{departamentoBean.selecionado}" value="#{departamento}" />
+                                </h:commandLink>
+                            </p:column>
 
 
 
-                </p:dataTable>
+                        </p:dataTable>
 
-            </h:form>
-        </p:fieldset>
-        
-        <p:fieldset legend="Atualização">
-            <h:form id="update">
-                <h:inputHidden value="#{departamentoBean.selecionado.idDepartamento}" />
-                <p:panelGrid columns="2" >
+                    </h:form>
+                </p:fieldset>
 
-                    
-                    <h:outputLabel value="Nome"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.selecionado.nomeDep}"></p:inputText>
+                <p:fieldset legend="Atualização">
+                    <h:form id="update">
+                        <h:inputHidden value="#{departamentoBean.selecionado.idDepartamento}" />
+                        <p:panelGrid columns="2" >
 
-                    <h:outputLabel value="Nome extenso"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.selecionado.nomeDepExt}"></p:inputText>
 
-                    <h:outputLabel value="Descrição"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.selecionado.descricao}"></p:inputText>
+                            <h:outputLabel value="Nome"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.selecionado.nomeDep}"></p:inputText>
 
-                    <h:outputLabel value="Abertura"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.selecionado.horaAbre}" ></p:inputText>
+                            <h:outputLabel value="Nome extenso"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.selecionado.nomeDepExt}"></p:inputText>
 
-                    <h:outputLabel value="Fechamento"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.selecionado.horaFecha}" ></p:inputText>
+                            <h:outputLabel value="Descrição"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.selecionado.descricao}"></p:inputText>
 
-                    <h:outputLabel value="Bloco"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.selecionado.localizacao}" ></p:inputText>
+                            <h:outputLabel value="Abertura"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.selecionado.horaAbre}" ></p:inputText>
 
-                    <h:outputLabel value="Responsável"></h:outputLabel>
-                    <p:inputText value="#{departamentoBean.selecionado.responsavel}" ></p:inputText>
+                            <h:outputLabel value="Fechamento"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.selecionado.horaFecha}" ></p:inputText>
 
-                    <p:commandButton value="Atualizar" action="#{departamentoBean.update}" type="button">
-                        <f:ajax execute="@form" render=":create :update :listAll"/>
-                    </p:commandButton>
-                </p:panelGrid>
-            </h:form>
-        </p:fieldset>
+                            <h:outputLabel value="Bloco"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.selecionado.localizacao}" ></p:inputText>
 
-    </h:body>
+                            <h:outputLabel value="Responsável"></h:outputLabel>
+                            <p:inputText value="#{departamentoBean.selecionado.responsavel}" ></p:inputText>
+
+                            <p:commandButton value="Atualizar" action="#{departamentoBean.update}" type="button">
+                                <f:ajax execute="@form" render=":create :update :listAll"/>
+                            </p:commandButton>
+                        </p:panelGrid>
+                    </h:form>
+                </p:fieldset>
+
+            </h:body>
+        </ui:define>
+    </ui:composition>
 </html>
 

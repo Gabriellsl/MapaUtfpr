@@ -5,43 +5,44 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="corpo">
+            <h:head>
+                <title>Usuario</title>
+            </h:head>
+            <h:body>
 
-    <h:head>
-        <title>Usuario</title>
-    </h:head>
-    <h:body>
+                <p:messages autoUpdate="true" showDetail="true"></p:messages>
+                <p:fieldset legend="Criação">
+                    <h:form id="create">  
+                        <p:growl id="msg" showDetail="true" escape="false" />
+                        <p:panelGrid columns="2" >
+                            <h:outputLabel value="Nome"></h:outputLabel>
+                            <p:inputText value="#{usuarioBean.usuario.nome}"></p:inputText>
 
-        <p:messages autoUpdate="true" showDetail="true"></p:messages>
-        <p:fieldset legend="Criação">
-            <h:form id="create">  
-                <p:growl id="msg" showDetail="true" escape="false" />
-                <p:panelGrid columns="2" >
-                    <h:outputLabel value="Nome"></h:outputLabel>
-                    <p:inputText value="#{usuarioBean.usuario.nome}"></p:inputText>
+                            <h:outputLabel value="Login"></h:outputLabel>
+                            <p:inputText value="#{usuarioBean.usuario.login}"></p:inputText>
 
-                    <h:outputLabel value="Login"></h:outputLabel>
-                    <p:inputText value="#{usuarioBean.usuario.login}"></p:inputText>
-
-                    <h:outputLabel value="Senha"></h:outputLabel>
-                    <p:inputText value="#{usuarioBean.usuario.senha}"></p:inputText>
+                            <h:outputLabel value="Senha"></h:outputLabel>
+                            <p:inputText value="#{usuarioBean.usuario.senha}"></p:inputText>
 
 
-                    <h:outputLabel value="Permissoes"></h:outputLabel>
-                    <p:pickList id="PojoPickList" 
-                                value="#{usuarioBean.perms}" 
-                                var="permissao" 
-                                effect="bounce"
-                                itemValue="#{permissao}" 
-                                itemLabel="#{permissao.nomePer}" 
-                                showCheckbox="true"
-                                showSourceFilter="true" 
-                                showTargetFilter="true" 
-                                filterMatchMode="contains" 
-                                converter="entityConverter"
-                                >
+                            <h:outputLabel value="Permissoes"></h:outputLabel>
+                            <p:pickList id="PojoPickList" 
+                                        value="#{usuarioBean.perms}" 
+                                        var="permissao" 
+                                        effect="bounce"
+                                        itemValue="#{permissao}" 
+                                        itemLabel="#{permissao.nomePer}" 
+                                        showCheckbox="true"
+                                        showSourceFilter="true" 
+                                        showTargetFilter="true" 
+                                        filterMatchMode="contains" 
+                                        converter="entityConverter"
+                                        >
 
-                        <f:facet name="sourceCaption">Disponível</f:facet>
-                        <f:facet name="targetCaption">Inicial</f:facet>
+                                <f:facet name="sourceCaption">Disponível</f:facet>
+                                <f:facet name="targetCaption">Inicial</f:facet>
 
 
 
@@ -52,110 +53,112 @@
 
 
 
-                        <p:column style="width:85%;">
-                            <h:outputText value="#{permissao.nomePer}" />
-                        </p:column>
-                    </p:pickList>
+                                <p:column style="width:85%;">
+                                    <h:outputText value="#{permissao.nomePer}" />
+                                </p:column>
+                            </p:pickList>
 
 
 
 
-                    <h:commandButton action="#{usuarioBean.create}" value="Salvar"/>
-                </p:panelGrid>
-            </h:form>
+                            <h:commandButton action="#{usuarioBean.create}" value="Salvar"/>
+                        </p:panelGrid>
+                    </h:form>
 
 
 
-        </p:fieldset>
+                </p:fieldset>
 
-        <p:fieldset legend="Listagem">
-            <h:form id="listAll">
-                <p:dataTable value="#{usuarioBean.allUsuarios}" var="usuario" >
+                <p:fieldset legend="Listagem">
+                    <h:form id="listAll">
+                        <p:dataTable value="#{usuarioBean.allUsuarios}" var="usuario" >
 
-                    <p:column headerText="ID" sortBy="#{usuario.idUsuario}">
-                        <h:outputText value="#{usuario.idUsuario}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="ID" sortBy="#{usuario.idUsuario}">
+                                <h:outputText value="#{usuario.idUsuario}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="Nome" sortBy="#{usuario.nome}">
-                        <h:outputText value="#{usuario.nome}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="Nome" sortBy="#{usuario.nome}">
+                                <h:outputText value="#{usuario.nome}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="Login" sortBy="#{usuario.login}">
-                        <h:outputText value="#{usuario.login}"></h:outputText>
-                    </p:column>
+                            <p:column headerText="Login" sortBy="#{usuario.login}">
+                                <h:outputText value="#{usuario.login}"></h:outputText>
+                            </p:column>
 
-                    <p:column headerText="Senha" sortBy="#{usuario.senha}">
-                        <h:outputText value="#{usuario.senha}"></h:outputText>
-                    </p:column>
-
-
-                    <p:column>
-                        <h:commandLink action="#{usuarioBean.mudarParaEdita()}" title="editar">
-                            <f:ajax execute="@this" render=":update" />
-                            <p:commandButton value="Editar" />
-                            <f:setPropertyActionListener target="#{usuarioBean.selecionado}" value="#{usuario}" />
-                        </h:commandLink>
-                    </p:column>
-                    <p:column>
-                        <h:commandLink action="#{usuarioBean.delete()}" title="excluir">
-                            <f:ajax execute="@this" render=":create :update :listAll" />
-                            <p:commandButton value="Deletar" />
-                            <f:setPropertyActionListener target="#{usuarioBean.selecionado}" value="#{usuario}" />
-                        </h:commandLink>
-                    </p:column>
+                            <p:column headerText="Senha" sortBy="#{usuario.senha}">
+                                <h:outputText value="#{usuario.senha}"></h:outputText>
+                            </p:column>
 
 
-
-                </p:dataTable>
-
-            </h:form>
-        </p:fieldset>
-
-        <p:fieldset legend="Atualização">
-            <h:form id="update">
-                <h:inputHidden value="#{usuarioBean.selecionado.idUsuario}" />
-                <p:panelGrid columns="2" >
-
-
-                    <h:outputLabel value="Nome"></h:outputLabel>
-                    <p:inputText value="#{usuarioBean.selecionado.nome}"></p:inputText>
-
-                    <h:outputLabel value="Login"></h:outputLabel>
-                    <p:inputText value="#{usuarioBean.selecionado.login}"></p:inputText>
-
-                    <h:outputLabel value="Senha"></h:outputLabel>
-                    <p:inputText value="#{usuarioBean.selecionado.senha}"></p:inputText>
-
-                    <h:outputLabel value="Permissoes"></h:outputLabel>
-                    <p:pickList id="PojoPickList2" 
-                                value="#{usuarioBean.perms2}" 
-                                var="permissao" 
-                                effect="bounce"
-                                itemValue="#{permissao}" 
-                                itemLabel="#{permissao.nomePer}" 
-                                showCheckbox="true"
-                                showSourceFilter="true" 
-                                showTargetFilter="true" 
-                                filterMatchMode="contains" 
-                                converter="entityConverter"
-                                >
-
-                        <f:facet name="sourceCaption">Disponível</f:facet>
-                        <f:facet name="targetCaption">Inicial</f:facet>
-
-                        <p:column style="width:85%;">
-                            <h:outputText value="#{permissao.nomePer}" />
-                        </p:column>
-                    </p:pickList>
+                            <p:column>
+                                <h:commandLink action="#{usuarioBean.mudarParaEdita()}" title="editar">
+                                    <f:ajax execute="@this" render=":update" />
+                                    <p:commandButton value="Editar" />
+                                    <f:setPropertyActionListener target="#{usuarioBean.selecionado}" value="#{usuario}" />
+                                </h:commandLink>
+                            </p:column>
+                            <p:column>
+                                <h:commandLink action="#{usuarioBean.delete()}" title="excluir">
+                                    <f:ajax execute="@this" render=":create :update :listAll" />
+                                    <p:commandButton value="Deletar" />
+                                    <f:setPropertyActionListener target="#{usuarioBean.selecionado}" value="#{usuario}" />
+                                </h:commandLink>
+                            </p:column>
 
 
-                    <p:commandButton value="Atualizar" action="#{usuarioBean.update}" type="button">
-                        <f:ajax execute="@form" render=":create :update :listAll"/>
-                    </p:commandButton>
-                </p:panelGrid>
-            </h:form>
-        </p:fieldset>
 
-    </h:body>
+                        </p:dataTable>
+
+                    </h:form>
+                </p:fieldset>
+
+                <p:fieldset legend="Atualização">
+                    <h:form id="update">
+                        <h:inputHidden value="#{usuarioBean.selecionado.idUsuario}" />
+                        <p:panelGrid columns="2" >
+
+
+                            <h:outputLabel value="Nome"></h:outputLabel>
+                            <p:inputText value="#{usuarioBean.selecionado.nome}"></p:inputText>
+
+                            <h:outputLabel value="Login"></h:outputLabel>
+                            <p:inputText value="#{usuarioBean.selecionado.login}"></p:inputText>
+
+                            <h:outputLabel value="Senha"></h:outputLabel>
+                            <p:inputText value="#{usuarioBean.selecionado.senha}"></p:inputText>
+
+                            <h:outputLabel value="Permissoes"></h:outputLabel>
+                            <p:pickList id="PojoPickList2" 
+                                        value="#{usuarioBean.perms2}" 
+                                        var="permissao" 
+                                        effect="bounce"
+                                        itemValue="#{permissao}" 
+                                        itemLabel="#{permissao.nomePer}" 
+                                        showCheckbox="true"
+                                        showSourceFilter="true" 
+                                        showTargetFilter="true" 
+                                        filterMatchMode="contains" 
+                                        converter="entityConverter"
+                                        >
+
+                                <f:facet name="sourceCaption">Disponível</f:facet>
+                                <f:facet name="targetCaption">Inicial</f:facet>
+
+                                <p:column style="width:85%;">
+                                    <h:outputText value="#{permissao.nomePer}" />
+                                </p:column>
+                            </p:pickList>
+
+
+                            <p:commandButton value="Atualizar" action="#{usuarioBean.update}" type="button">
+                                <f:ajax execute="@form" render=":create :update :listAll"/>
+                            </p:commandButton>
+                        </p:panelGrid>
+                    </h:form>
+                </p:fieldset>
+
+            </h:body>
+        </ui:define>
+    </ui:composition>
 </html>
 
