@@ -16,6 +16,36 @@ body, td, th {
     float: left;
 }
 
+.sugestao{
+    /*background: url("../imagens/sugestaoBackground.jpg");*/
+    /*background-size: 100%;*/
+    /*height: 100vh;*/
+
+}
+
+.sugestaoContainer{
+    background: url("../imagens/sugestaoBackground.jpg");
+    background-size: auto 100%;
+    background-repeat-x: repeat;
+    background-repeat-y: no-repeat;
+    height: 98vh;
+
+}
+
+.sugButton{
+    width: 40%;
+    background-color: palegreen;
+    border: 0;
+    color: black;
+    
+}
+
+.sugInput{
+    text-align: center;
+    /*width: 50%;*/
+    margin-top: 20%;    
+}
+
 .botao{
     position:absolute;
     top:40%;
@@ -88,8 +118,8 @@ body, td, th {
     padding: 5%;
     width: 70%;
     background-color: #fffd96;
-     border: none;
-  border-radius: 25px;
+    border: none;
+    border-radius: 25px;
 }
 
 .depButton:hover{
