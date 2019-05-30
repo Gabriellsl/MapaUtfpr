@@ -10,6 +10,7 @@ import com.utf.grw.utfmaps.modelo.departamento.DepartamentoRN;
 import com.utf.grw.utfmaps.modelo.usuario.Usuario;
 import com.utf.grw.utfmaps.modelo.usuario.UsuarioRN;
 import java.util.ArrayList;
+import com.utf.grw.utfmaps.util.Logger;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -84,6 +85,7 @@ public class DepartamentoBean {
         try {
             departamentoRN.excluir(this.selecionado);
         } catch (Error e) {
+            Logger.save(this.getClass(), e.getMessage());
             System.out.println("Houve um erro ao excluir um departamento: " + e);
         }
         this.lista = null;

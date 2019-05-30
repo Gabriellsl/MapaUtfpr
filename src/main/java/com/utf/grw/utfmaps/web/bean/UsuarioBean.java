@@ -9,6 +9,7 @@ import com.utf.grw.utfmaps.modelo.departamento.Departamento;
 import com.utf.grw.utfmaps.modelo.departamento.DepartamentoRN;
 import com.utf.grw.utfmaps.modelo.usuario.Usuario;
 import com.utf.grw.utfmaps.modelo.usuario.UsuarioRN;
+import com.utf.grw.utfmaps.util.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -87,6 +88,7 @@ public class UsuarioBean {
         try {
             usuarioRN.excluir(this.selecionado);
         } catch (Error e) {
+            Logger.save(this.getClass(), e.getMessage());
             System.out.println("Houve um erro ao excluir um Usuario: " + e);
         }
         this.lista = null;

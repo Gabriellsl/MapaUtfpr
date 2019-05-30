@@ -2,6 +2,7 @@
 package com.utf.grw.utfmaps.modelo.usuario;
 
 import com.utf.grw.utfmaps.modelo.permissao.Permissao;
+import com.utf.grw.utfmaps.util.Logger;
 import java.util.List;
 
 
@@ -18,6 +19,7 @@ public class UsuarioRN {
         try {
             this.usuarioDAO.salvar(usuario);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
@@ -26,6 +28,7 @@ public class UsuarioRN {
         try {
             this.usuarioDAO.atualizar(usuario);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
@@ -34,6 +37,7 @@ public class UsuarioRN {
         try {
             this.usuarioDAO.excluir(usuario);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
@@ -42,6 +46,7 @@ public class UsuarioRN {
         try {
             return this.usuarioDAO.buscarPorId(codigo);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
         return null;
@@ -51,13 +56,20 @@ public class UsuarioRN {
         try {
             return this.usuarioDAO.buscarPorLogin(login);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
         return null;
     }
     
     public List<Usuario> listar(){
-        return this.usuarioDAO.listar();
+        try{    
+            return this.usuarioDAO.listar();
+        } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
+            System.err.println(ex.getMessage());
+        }
+        return null;
     }
 
     public Usuario refresh(Usuario selecionado) {

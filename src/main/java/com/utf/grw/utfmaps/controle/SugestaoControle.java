@@ -5,30 +5,12 @@ import com.utf.grw.utfmaps.modelo.sugestao.SugestaoRN;
 
 /**
  *
- * @author ALUNO
+ * @author Boniolo
  */
 public class SugestaoControle {
     
-    private SugestaoRN sugestaoRN;
-    
-    public SugestaoControle() {
-        this.sugestaoRN = new SugestaoRN();
-    }
-    
     public void salvarSugestao(Sugestao sugestao) {
+        SugestaoRN sugestaoRN = new SugestaoRN();
         sugestaoRN.salvar(sugestao);
-    }
-    
-    public void atualizarSugestao(Sugestao sugestao) {
-        sugestaoRN.atualizar(sugestao);
-    }
-    
-    public void excluirSugestao(Sugestao sugestao) {
-        sugestaoRN.excluir(sugestao);
-    }
-    
-    public Sugestao buscarSugestao(String nome) {
-        return sugestaoRN.buscar(nome);
-    }
-    
+    }   
 }

@@ -34,7 +34,9 @@ public class SendData {
             this.post.setEntity(new StringEntity(new Gson().toJson(obj, clazz)));
             this.httpClient.execute(this.post);
         } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("********************************************");
+            System.out.println("*************Connection Refused*************");
+            System.out.println("********************************************");            
         }
     }
 }

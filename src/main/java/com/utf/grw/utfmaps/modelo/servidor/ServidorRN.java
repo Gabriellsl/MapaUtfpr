@@ -1,5 +1,7 @@
 package com.utf.grw.utfmaps.modelo.servidor;
 
+import com.utf.grw.utfmaps.util.Logger;
+
 /**
  *
  * @author Geovani José
@@ -16,6 +18,7 @@ public class ServidorRN {
         try {
             this.servidorDAO.salvar(servidor);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
@@ -24,6 +27,7 @@ public class ServidorRN {
         try {
             this.servidorDAO.atualizar(servidor);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
@@ -32,6 +36,7 @@ public class ServidorRN {
         try {
             this.servidorDAO.excluir(servidor);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
     }
@@ -40,6 +45,7 @@ public class ServidorRN {
         try {
             return this.servidorDAO.buscarPorId(codigo);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
         return null;
@@ -49,6 +55,7 @@ public class ServidorRN {
         try {
             return this.servidorDAO.buscarPorLogin(login);
         } catch (Exception ex) {
+            Logger.save(this.getClass(), ex.getMessage());
             System.err.println(ex.getMessage());
         }
         return null;

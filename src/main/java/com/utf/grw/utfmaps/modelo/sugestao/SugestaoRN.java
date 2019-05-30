@@ -1,57 +1,22 @@
 package com.utf.grw.utfmaps.modelo.sugestao;
 
+import com.utf.grw.utfmaps.properties.PropertiesReader;
+import com.utf.grw.utfmaps.util.SendData;
+
 /**
  *
- * @author Geovani José
+ * @author Boniolo
  */
 public class SugestaoRN {
-    
-    private SugestaoDAO sugestaoDAO;
-
-    public SugestaoRN() {
-        this.sugestaoDAO = new SugestaoDAOHibernate();
-    }
-    
     public void salvar(Sugestao sugestao) {
         try {
-            this.sugestaoDAO.salvar(sugestao);
+            PropertiesReader pr = new PropertiesReader();
+            SendData sd = new SendData(pr.getURI_SUGESTAO(), pr.getTOKEN_SUGESTAO());
+            sd.POST(sugestao, Sugestao.class);
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
     }
     
-    public void atualizar(Sugestao sugestao){
-        try {
-            this.sugestaoDAO.atualizar(sugestao);
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
-    
-    public void excluir(Sugestao sugestao){
-        try {
-            this.sugestaoDAO.excluir(sugestao);
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
-    
-    public Sugestao buscar(Long codigo){
-        try {
-            return this.sugestaoDAO.buscarPorId(codigo);
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-        }
-        return null;
-    }
-    
-    public Sugestao buscar(String login){
-        try {
-            return this.sugestaoDAO.buscarPorLogin(login);
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-        }
-        return null;
-    }
     
 }
