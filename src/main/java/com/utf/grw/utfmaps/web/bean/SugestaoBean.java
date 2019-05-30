@@ -8,11 +8,16 @@ package com.utf.grw.utfmaps.web.bean;
 import com.utf.grw.utfmaps.modelo.sugestao.Sugestao;
 import com.utf.grw.utfmaps.modelo.sugestao.SugestaoRN;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author a1808338
  */
+
+@ManagedBean(name = "sugestaoBean")
+@RequestScoped
 public class SugestaoBean {
     
     Sugestao sugestao;
@@ -24,6 +29,7 @@ public class SugestaoBean {
     
     public void salvar(){
         SugestaoRN sugestaoRN = new SugestaoRN();
+        System.out.println("a descrição é:  "+this.sugestao.getSugestao());
         sugestaoRN.salvar(this.sugestao);
     }
 

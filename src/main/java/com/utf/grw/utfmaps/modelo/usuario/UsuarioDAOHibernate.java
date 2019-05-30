@@ -19,7 +19,7 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 
    EntityManager manager;
 
-    public UsuarioDAOHibernate() {
+    public UsuarioDAOHibernate() {     
         manager = ConexaoHibernate.getInstance();
     }
     
@@ -75,6 +75,10 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
         return usuario;
     }
     
-    
+    @Override
+    public Usuario refresh(Usuario usuario){
+        manager.refresh(usuario);
+        return usuario;
+    }
     
 }

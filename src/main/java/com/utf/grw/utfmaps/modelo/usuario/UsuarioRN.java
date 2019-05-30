@@ -71,4 +71,8 @@ public class UsuarioRN {
         }
         return null;
     }
+
+    public Usuario refresh(Usuario selecionado) {
+        return this.usuarioDAO.refresh(selecionado);
+    }
 }
