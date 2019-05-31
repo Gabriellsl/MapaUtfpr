@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  	
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+    <h:head>
+        <title>Sugestões</title>
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" media="screen" />
+    </h:head>
+    <h:body>
+
+        <div class="sugestaoContainer">
+
+
+            <p:outputPanel>
+                <div class="ui-grid sugestao">
+
+                    <div class="ui-grid-row space"></div>
+
+                    <h:form class="teste2">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-1"></div>
+                            <div class="ui-grid-col-10 sugInput"> 
+                                <p:inputTextarea class="sugText" style="width: 90%; height: 60%" value="#{sugestaoBean.sugestao.sugestao}" rows="6" cols="33" />
+                                <h:commandButton class="sugButton" action="#{sugestaoBean.salvar()}" value="Salvar"/>
+
+                            </div>
+                            <div class="ui-grid-col-1"></div>
+                        </div>
+                    </h:form>
+                </div>
+            </p:outputPanel>
+
+
+        </div>
+    </h:body>
+</html>
+

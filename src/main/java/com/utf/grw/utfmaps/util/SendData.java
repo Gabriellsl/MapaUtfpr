@@ -21,8 +21,10 @@ import org.jboss.jandex.Main;
 public class SendData {
     HttpClient httpClient = null;
     HttpPost post = null;
+    String URI;
     
     public SendData(String URI, String token) {
+        this.URI = URI;
         this.httpClient = HttpClients.createDefault();       
         this.post = new HttpPost(URI);
         this.post.setHeader("authorization", token);
@@ -30,13 +32,26 @@ public class SendData {
     }
     
     public void POST(Object obj, Class clazz){
+        
         try {
             this.post.setEntity(new StringEntity(new Gson().toJson(obj, clazz)));
             this.httpClient.execute(this.post);
+            
+            System.out.println("____________________________________________");
+            System.out.println("********************************************");
+            System.out.println("*******************SENDED*******************");
+            System.out.println(this.URI);
+            System.out.println("********************************************");
+            System.out.println("____________________________________________");
+            
         } catch (Exception ex) {
+            System.out.println("____________________________________________");
             System.out.println("********************************************");
             System.out.println("*************Connection Refused*************");
+            System.out.println(this.URI);
             System.out.println("********************************************");            
+            System.out.println("____________________________________________");
+            
         }
     }
 }

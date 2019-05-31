@@ -21,6 +21,7 @@ public interface UsuarioDAO {
     Usuario buscarPorId(Long codigo);
     List<Usuario> listar();
     Usuario buscarPorLogin(String nome);
+    public Usuario refresh(Usuario selecionado);
     
     
 }
