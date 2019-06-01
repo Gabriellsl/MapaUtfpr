@@ -12,6 +12,7 @@
         <title>Facelet Title</title>
         <!--        <link rel="StyleSheet" type="text/css" href="resources/css/estilos.css" media="screen"></link>-->
         <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/animate.css" media="screen" />
 
 
 
@@ -37,7 +38,7 @@
 
     <h:commandButton value="#{departamento.nomeDep}"></h:commandButton><br></br>
 </p:dataTable>-->
-                    
+
                     <table>
                         <c:forEach items="#{mapaBean.departamentos}" var="dep">
 
@@ -53,12 +54,12 @@
 
             </p:dialog>
 
-            <div class="ui-g image-container">
+            <div class="ui-g image-container animated zoomIn">
                 <div class="mapaContent">
                     <h:graphicImage class="map" library="imagens" name="fundoPrincipalPronto2.png"/> 
                 </div>
                 <h:form>
-                    <p:commandLink update=":dialog" action="#{mapaBean.teste('L')}">
+                    <p:commandLink  update=":dialog" action="#{mapaBean.teste('L')}">
                         <h:graphicImage style="top:14%; left:4%;" class="botao" library="imagens" name="bloco1.png"/> 
                         <f:ajax execute="@form"/>
                     </p:commandLink>
