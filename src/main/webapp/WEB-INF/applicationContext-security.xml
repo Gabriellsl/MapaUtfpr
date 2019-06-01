@@ -7,10 +7,11 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 	<http auto-config="true"> 
-                <intercept-url pattern="/public/**" access="ROLE_ALL" />
+                <intercept-url pattern="/private/**" access="ROLE_ALL" />
+                
                 <form-login login-page="/login.xhtml" 
 			always-use-default-target="true" 
-			default-target-url="/public/mapa.xhtml"
+			default-target-url="/private/departamento_1.xhtml"
                         login-processing-url="/j_spring_security_check"
                                                         /><!--
 		<logout/> -->
