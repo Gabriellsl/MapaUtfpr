@@ -11,6 +11,7 @@ import com.utf.grw.utfmaps.modelo.usuario.Usuario;
 import com.utf.grw.utfmaps.modelo.usuario.UsuarioRN;
 import java.util.ArrayList;
 import com.utf.grw.utfmaps.util.Logger;
+import com.utf.grw.utfmaps.util.UserContext;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -30,6 +31,8 @@ public class DepartamentoBean {
     //picklist
     private DualListModel<Usuario> usus;
     private DualListModel<Usuario> usus2;
+    
+    String nomeUsuario;
 
     @PostConstruct
     public void init() {
@@ -45,6 +48,8 @@ public class DepartamentoBean {
         UsuarioOrigem = this.getUsuarios();
         usus = new DualListModel<Usuario>(UsuarioOrigem, UsuarioDestino);
         usus2 = new DualListModel<Usuario>(UsuarioOrigem2, UsuarioDestino2);
+        
+        this.nomeUsuario = UserContext.getUserContext().getNome();
 
     }
 
@@ -116,6 +121,17 @@ public class DepartamentoBean {
         if (this.lista == null) {
             DepartamentoRN departamentoRN = new DepartamentoRN();
             this.lista = departamentoRN.listar();
+        }
+        return this.lista;
+    }
+    
+    public List<Departamento> getAllByUser() {
+        if (isBusca() == false) {
+            mudarParaBusca();
+        }
+        if (this.lista == null) {
+            
+            this.lista = UserContext.getUserContext().getDepartamentos();
         }
         return this.lista;
     }
@@ -235,6 +251,14 @@ public class DepartamentoBean {
 
     public void setEstadoTela(String estadoTela) {
         this.estadoTela = estadoTela;
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
     
     

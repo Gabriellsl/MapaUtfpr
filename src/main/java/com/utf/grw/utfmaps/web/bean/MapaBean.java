@@ -5,6 +5,7 @@ package com.utf.grw.utfmaps.web.bean;
 
 import com.utf.grw.utfmaps.modelo.departamento.Departamento;
 import com.utf.grw.utfmaps.modelo.departamento.DepartamentoRN;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -16,7 +17,7 @@ import org.primefaces.context.RequestContext;
 
 @ManagedBean(name = "mapaBean")
 @SessionScoped
-public class MapaBean {
+public class MapaBean implements Serializable{
     
     private boolean carregar = false;
     
@@ -39,14 +40,14 @@ public class MapaBean {
         cities.add("Barcelona");
         cities.add("Rome");
         
-        this.departamentos = departamentoRN.buscarPorLocalizacao("L");
+        //this.departamentos = departamentoRN.buscarPorLocalizacao("L");
               
     }
  
     
     
     public void teste(String bloco){
-        System.out.println("Testando..."+ bloco);
+        System.out.println("Testando..."+ bloco); 
         //this.carregar = true;
         this.departamentos = departamentoRN.buscarPorLocalizacao(bloco);
         this.bloco = bloco;

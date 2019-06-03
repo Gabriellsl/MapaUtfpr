@@ -12,11 +12,13 @@
     <h:body>
 
         <p:messages autoUpdate="true" showDetail="true"></p:messages>
-        
+
+        <h1> Bem vindo #{departamentoBean.nomeUsuario}</h1>
+
         <p:fieldset legend="Listagem">
             <h:form id="listAll">
                 <p:dataTable value="#{departamentoBean.allByUser}" var="departamento" >
- 
+
                     <p:column headerText="ID" sortBy="#{departamento.idDepartamento}">
                         <h:outputText value="#{departamento.idDepartamento}"></h:outputText>
                     </p:column>
@@ -56,13 +58,7 @@
                             <f:setPropertyActionListener target="#{departamentoBean.selecionado}" value="#{departamento}" />
                         </h:commandLink>
                     </p:column>
-                    <p:column>
-                        <h:commandLink action="#{departamentoBean.delete()}" title="excluir">
-                            <f:ajax execute="@this" render=":create :update :listAll" />
-                            <p:commandButton value="Deletar" />
-                            <f:setPropertyActionListener target="#{departamentoBean.selecionado}" value="#{departamento}" />
-                        </h:commandLink>
-                    </p:column>
+                    
 
 
 
@@ -97,6 +93,9 @@
 
                     <h:outputLabel value="Responsável"></h:outputLabel>
                     <p:inputText value="#{departamentoBean.selecionado.responsavel}" ></p:inputText>
+                    
+                    
+                    
 
                     <p:commandButton value="Atualizar" action="#{departamentoBean.update}" type="button">
                         <f:ajax execute="@form" render=":create :update :listAll"/>
