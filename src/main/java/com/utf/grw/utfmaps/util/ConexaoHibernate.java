@@ -30,6 +30,7 @@ public class ConexaoHibernate {
                         factory = Persistence.createEntityManagerFactory("TrioHibernate");
                         manager = factory.createEntityManager();
                     } catch (HibernateException he) {
+                        Logger.save("ConexaoHibernate", he.getMessage());
                         System.err.println(he.getMessage());
                     }
                 }

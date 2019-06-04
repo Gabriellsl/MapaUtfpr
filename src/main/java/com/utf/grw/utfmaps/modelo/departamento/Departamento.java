@@ -1,12 +1,17 @@
 package com.utf.grw.utfmaps.modelo.departamento;
 
+import com.utf.grw.utfmaps.modelo.permissao.Permissao;
 import com.utf.grw.utfmaps.modelo.sugestao.Sugestao;
+import com.utf.grw.utfmaps.modelo.usuario.Usuario;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -15,38 +20,43 @@ import javax.persistence.OneToMany;
  * @author ALUNO
  */
 @Entity
-@NamedQuery(name="Departamento.findAll", query="SELECT d FROM Departamento d")
+@NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d")
 public class Departamento {
+
     @Id
     @GeneratedValue
-    @Column(name="DEP_ID")
+    @Column(name = "DEP_ID")
     private Long idDepartamento;
-    @Column(name="DEP_NOME")
+    @Column(name = "DEP_NOME")
     private String nomeDep;
-    @Column(name="DEP_NOMEEXT")
+    @Column(name = "DEP_NOMEEXT")
     private String nomeDepExt;
-    @Column(name="DEP_DESCRICAO", length=4000)
+    @Column(name = "DEP_DESCRICAO", length = 4000)
     private String descricao;
-    @Column(name="DEP_RESPONSAVEL")
+    @Column(name = "DEP_RESPONSAVEL")
     private String responsavel;
-    @Column(name="DEP_HORAABRE")
+    @Column(name = "DEP_HORAABRE")
     private String horaAbre;
-    @Column(name="DEP_HORAFECHA")
+    @Column(name = "DEP_HORAFECHA")
     private String horaFecha;
-    @Column(name="DEP_INDICE")
-    private int indice;
-    
-    @OneToMany(/*mappedBy = "Departamento",*/ cascade = CascadeType.REMOVE)
-    private List<Sugestao> sugestoes;
-    
-    public Departamento(String nomeDep,String nomeDepExt, String descricao, String responsavel, String horaAbre, String horaFecha, int indice) {
-        this.nomeDep = nomeDep;
-        this.descricao = descricao;
-        this.responsavel = responsavel;
-        this.horaAbre = horaAbre;
-        this.horaFecha = horaFecha;
-        this.nomeDepExt = nomeDepExt;
-        this.indice = indice;
+    @Column(name = "DEP_LOCALIZACAO")
+    private String localizacao;
+    @ManyToMany(targetEntity = Usuario.class)
+    @JoinTable(name = "Departamento_Usuario", joinColumns = {
+        @JoinColumn(name = "DEP_FK_ID", referencedColumnName = "DEP_ID")}, inverseJoinColumns = {
+        @JoinColumn(name = "USU_FK_ID", referencedColumnName = "USU_ID")})
+    private List<Usuario> usuarios;
+
+//    @OneToMany(/*mappedBy = "Departamento",*/ cascade = CascadeType.REMOVE)
+//    private List<Sugestao> sugestoes;
+    public Departamento(/*String nomeDep,String nomeDepExt, String descricao, String responsavel, String horaAbre, String horaFecha, int indice*/) {
+//        this.nomeDep = nomeDep;
+//        this.descricao = descricao;
+//        this.responsavel = responsavel;
+//        this.horaAbre = horaAbre;
+//        this.horaFecha = horaFecha;
+//        this.nomeDepExt = nomeDepExt;
+//        this.indice = indice;
     }
 
     public Long getIdDepartamento() {
@@ -105,20 +115,34 @@ public class Departamento {
         this.nomeDepExt = nomeDepExt;
     }
 
-    public int getIndice() {
-        return indice;
+//    public int getIndice() {;
+//        return indice;
+//    }
+//
+//    public void setIndice(int indice) {
+//        this.indice = indice;
+//    }
+//    public List<Sugestao> getSugestoes() {;
+//        return sugestoes;
+//    }
+//
+//    public void setSugestoes(List<Sugestao> sugestoes) {
+//        this.sugestoes = sugestoes;
+//    }
+    public String getLocalizacao() {
+        return localizacao;
     }
 
-    public void setIndice(int indice) {
-        this.indice = indice;
-    }
-    
-    public List<Sugestao> getSugestoes() {
-        return sugestoes;
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
     }
 
-    public void setSugestoes(List<Sugestao> sugestoes) {
-        this.sugestoes = sugestoes;
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
-    
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
 }
