@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import org.primefaces.context.RequestContext;
 
 @ManagedBean(name = "mapaBean")
-@SessionScoped
+@RequestScoped
 public class MapaBean implements Serializable{
     
     private boolean carregar = false;
@@ -40,7 +40,7 @@ public class MapaBean implements Serializable{
         cities.add("Barcelona");
         cities.add("Rome");
         
-        //this.departamentos = departamentoRN.buscarPorLocalizacao("L");
+        this.departamentos = departamentoRN.buscarPorLocalizacao("L");
               
     }
  

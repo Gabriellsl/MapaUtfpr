@@ -16,13 +16,18 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * @author boniolo
  */
 public class UserContext {
-
-    public static Usuario getUserContext() {
-
-        UsuarioRN usuarioRN = new UsuarioRN();
-        String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        Usuario user = usuarioRN.buscar(login);
-        user = usuarioRN.refresh(user);
+    
+    private final static Usuario user = null;
+    
+    
+    public static Usuario getUserContext(){
+        
+        if(user == null){
+            UsuarioRN usuarioRN = new UsuarioRN();
+            String login = SecurityContextHolder.getContext().getAuthentication().getName();
+            Usuario user = usuarioRN.buscar(login);
+            return user;
+        }       
         return user;
     }
 }
