@@ -26,11 +26,7 @@ public class HibernateConnectionFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         //ConexaoHibernate.getInstance();
-        try {
-            int a = 0/0;
-        } catch (Exception e) { 
-            Logger.save(this.getClass(), e.getMessage());
-        }
+        
     }
 
     @Override
