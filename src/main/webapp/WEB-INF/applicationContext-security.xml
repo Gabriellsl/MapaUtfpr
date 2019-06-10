@@ -8,21 +8,23 @@
 		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 	<http auto-config="true"> 
                 <intercept-url pattern="/private/**" access="ROLE_ALL" />
+				<intercept-url pattern="/root/**"    access="ROLE_ROOT" />
                 
                 <form-login login-page="/login.xhtml" 
-			always-use-default-target="true" 
-			default-target-url="/private/departamento_1.xhtml"
-                        login-processing-url="/j_spring_security_check"
-                                                        /><!--
-		<logout/> -->
+					always-use-default-target="true" 
+					default-target-url="/private/departamento.xhtml"
+            		login-processing-url="/j_spring_security_check"
+                                                        />
 		<remember-me /> 
 	</http>
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="financeiroDataSource" 
-				authorities-by-username-query="select u.USU_LOGIN, 'ROLE_ALL' from Usuario u where u.USU_LOGIN = ?"
-                                                                        
-				users-by-username-query="select USU_LOGIN, USU_SENHA, USU_ATIVO from Usuario where USU_LOGIN = ?" />
+				authorities-by-username-query="
+				select u.USU_LOGIN, (IF(u.USU_LOGIN='root', 'ROLE_ROOT', 'ROLE_ALL')) as ROLE from Usuario u where u.USU_LOGIN = ?
+				"
+				users-by-username-query="select USU_LOGIN, USU_SENHA, USU_ATIVO from Usuario where USU_LOGIN = ?" 
+				/>
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>
