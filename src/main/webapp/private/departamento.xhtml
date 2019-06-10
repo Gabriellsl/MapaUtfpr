@@ -10,7 +10,8 @@
         <title>Departamento</title>
     </h:head>
     <h:body>
-
+        <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="corpo">
         <p:messages autoUpdate="true" showDetail="true"></p:messages>
         <p:fieldset legend="Criação">
             <h:form id="create">    
@@ -200,5 +201,7 @@
         </p:fieldset>
 
     </h:body>
+    </ui:define>
+    </ui:composition>
 </html>
 
