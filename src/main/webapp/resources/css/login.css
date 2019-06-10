@@ -30,7 +30,7 @@
 
 }
 
-#submit{
+.submit{
     border: 0;
     background: none;
     display: block;
@@ -44,6 +44,6 @@
     transition: 0.25s;
     cursor: pointer;
 }
-#submit:hover{
+.submit:hover{
     background: #2ecc71;
 }
