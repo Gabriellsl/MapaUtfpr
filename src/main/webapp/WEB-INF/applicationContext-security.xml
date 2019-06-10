@@ -12,7 +12,7 @@
                 
                 <form-login login-page="/login.xhtml" 
 					always-use-default-target="true" 
-					default-target-url="/private/departamento.xhtml"
+					default-target-url="/redirect/redirect.xhtml"
             		login-processing-url="/j_spring_security_check"
                                                         />
 		<remember-me /> 
