@@ -12,26 +12,7 @@
         <title>Usuario</title>
     </h:head>
     <h:body>
-
-        <p:messages autoUpdate="true" showDetail="true"></p:messages>
-        <p:fieldset legend="Criação">
-            <h:form id="create">     
-                <p:panelGrid columns="2" >
-                    <h:outputLabel value="Nome"></h:outputLabel>
-                    <p:inputText value="#{usuarioBean.usuario.nome}"></p:inputText>
-
-                    <h:outputLabel value="Login"></h:outputLabel>
-                    <p:inputText value="#{usuarioBean.usuario.login}"></p:inputText>
-
-                    <h:outputLabel value="Senha"></h:outputLabel>
-                    <p:inputText value="#{usuarioBean.usuario.senha}"></p:inputText>
-
-
-                    <h:commandButton action="#{usuarioBean.create}" value="Salvar"/>
-                </p:panelGrid>
-            </h:form>
-        </p:fieldset>
-
+        <h1> Bem vindo #{departamentoBean.nomeUsuario}</h1>
         <p:fieldset legend="Listagem">
             <h:form id="listAll">
                 <p:dataTable value="#{usuarioBean.allUsuarios}" var="usuario" >

@@ -24,7 +24,7 @@ import com.utf.grw.utfmaps.util.UserContext;
 @ManagedBean(name = "redirectBean")
 @RequestScoped
 public class RedirectBean {
-
+    
 
     @PostConstruct
     public void init() {
