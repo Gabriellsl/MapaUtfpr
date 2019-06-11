@@ -15,8 +15,7 @@
 
         <p:messages autoUpdate="true" showDetail="true"></p:messages>
         <p:fieldset legend="Criação">
-            <h:form id="create">  
-                <p:growl id="msg" showDetail="true" escape="false" />
+            <h:form id="create">     
                 <p:panelGrid columns="2" >
                     <h:outputLabel value="Nome"></h:outputLabel>
                     <p:inputText value="#{usuarioBean.usuario.nome}"></p:inputText>
@@ -28,46 +27,9 @@
                     <p:inputText value="#{usuarioBean.usuario.senha}"></p:inputText>
 
 
-                    <h:outputLabel value="Departamentos"></h:outputLabel>
-                    <p:pickList id="PojoPickList" 
-                                value="#{usuarioBean.deps}" 
-                                var="departamento" 
-                                effect="bounce"
-                                itemValue="#{departamento}" 
-                                itemLabel="#{departamento.nomeDep}" 
-                                showCheckbox="true"
-                                showSourceFilter="true" 
-                                showTargetFilter="true" 
-                                filterMatchMode="contains" 
-                                converter="entityConverter"
-                                >
-
-                        <f:facet name="sourceCaption">Disponível</f:facet>
-                        <f:facet name="targetCaption">Inicial</f:facet>
-
-
-
-<!--                        <p:ajax event="transfer" listener="#{usuarioBean.onTransfer}" update="msg" />
-                        <p:ajax event="select" listener="#{usuarioBean.onSelect}" update="msg"/>
-                        <p:ajax event="unselect" listener="#{usuarioBean.onUnselect}" update="msg"/>
-                        <p:ajax event="reorder" listener="#{usuarioBean.onReorder}" update="msg"/>-->
-
-
-
-                        <p:column style="width:85%;">
-                            <h:outputText value="#{departamento.nomeDep}" />
-                        </p:column>
-                    </p:pickList>
-
-
-
-
                     <h:commandButton action="#{usuarioBean.create}" value="Salvar"/>
                 </p:panelGrid>
             </h:form>
-
-
-
         </p:fieldset>
 
         <p:fieldset legend="Listagem">
@@ -112,13 +74,13 @@
 
             </h:form>
         </p:fieldset>
-
+        
         <p:fieldset legend="Atualização">
             <h:form id="update">
                 <h:inputHidden value="#{usuarioBean.selecionado.idUsuario}" />
                 <p:panelGrid columns="2" >
 
-
+                    
                     <h:outputLabel value="Nome"></h:outputLabel>
                     <p:inputText value="#{usuarioBean.selecionado.nome}"></p:inputText>
 
@@ -127,28 +89,6 @@
 
                     <h:outputLabel value="Senha"></h:outputLabel>
                     <p:inputText value="#{usuarioBean.selecionado.senha}"></p:inputText>
-
-                    <h:outputLabel value="Departamentos"></h:outputLabel>
-                    <p:pickList id="PojoPickList2" 
-                                value="#{usuarioBean.departamentos2}" 
-                                var="departamento" 
-                                effect="bounce"
-                                itemValue="#{departamento}" 
-                                itemLabel="#{departamento.nomeDep}" 
-                                showCheckbox="true"
-                                showSourceFilter="true" 
-                                showTargetFilter="true" 
-                                filterMatchMode="contains" 
-                                converter="entityConverter"
-                                >
-
-                        <f:facet name="sourceCaption">Disponível</f:facet>
-                        <f:facet name="targetCaption">Inicial</f:facet>
-
-                        <p:column style="width:85%;">
-                            <h:outputText value="#{departamento.nomeDep}" />
-                        </p:column>
-                    </p:pickList>
 
 
                     <p:commandButton value="Atualizar" action="#{usuarioBean.update}" type="button">
@@ -162,4 +102,3 @@
         </ui:define>
     </ui:composition>
 </html>
-
