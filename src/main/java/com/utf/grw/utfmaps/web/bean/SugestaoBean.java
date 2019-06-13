@@ -5,11 +5,14 @@
  */
 package com.utf.grw.utfmaps.web.bean;
 
-import com.utf.grw.utfmaps.modelo.sugestao.Sugestao;
-import com.utf.grw.utfmaps.modelo.sugestao.SugestaoRN;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
+
+import com.utf.grw.utfmaps.modelo.sugestao.Sugestao;
+import com.utf.grw.utfmaps.modelo.sugestao.SugestaoRN;
 
 /**
  *
@@ -24,6 +27,11 @@ public class SugestaoBean {
     
     @PostConstruct
     public void init() {
+        System.out.println("*********************************************************************************");
+
+        System.out.println(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath());
+        System.out.println("*********************************************************************************");
+        
         this.sugestao  = new Sugestao();
     }
     

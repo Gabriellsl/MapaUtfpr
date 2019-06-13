@@ -21,8 +21,8 @@ public class UserContext {
 
         UsuarioRN usuarioRN = new UsuarioRN();
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        Usuario user = usuarioRN.buscar(login);
-        user = usuarioRN.refresh(user);
+        Usuario user = usuarioRN.buscar((long)2);
+        // user = usuarioRN.refresh(user);
         return user;
     }
 }

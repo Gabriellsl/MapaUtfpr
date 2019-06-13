@@ -71,7 +71,9 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
         String jpql = "SELECT s FROM Usuario s WHERE USU_LOGIN = ?1";
         Query query = manager.createQuery(jpql);
         query.setParameter(1, nome);
-        Usuario usuario = (Usuario)query.getSingleResult();
+        System.out.println(query.getSingleResult());
+
+        Usuario usuario = (Usuario) query.getSingleResult();
         return usuario;
     }
     

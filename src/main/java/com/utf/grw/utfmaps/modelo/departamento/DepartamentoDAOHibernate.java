@@ -1,9 +1,11 @@
 package com.utf.grw.utfmaps.modelo.departamento;
 
-import com.utf.grw.utfmaps.util.ConexaoHibernate;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import com.utf.grw.utfmaps.util.ConexaoHibernate;
 
 /**
  *

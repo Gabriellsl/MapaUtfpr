@@ -43,7 +43,7 @@ public class PropertiesReader {
 
         String path = sc.getRealPath("");
 
-        path = path.split("target")[0].concat("src\\main\\java\\com\\utf\\grw\\utfmaps\\properties\\conectionapi.properties");
+        path = path.split("webapp")[0].concat("java\\com\\utf\\grw\\utfmaps\\properties\\conectionapi.properties");
                 
         
         

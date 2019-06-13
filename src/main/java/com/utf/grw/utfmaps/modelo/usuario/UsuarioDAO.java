@@ -5,7 +5,6 @@
  */
 package com.utf.grw.utfmaps.modelo.usuario;
 
-import com.utf.grw.utfmaps.modelo.sugestao.Sugestao;
 import java.util.List;
 
 /**

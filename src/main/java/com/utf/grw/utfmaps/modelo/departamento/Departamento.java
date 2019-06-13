@@ -1,10 +1,7 @@
 package com.utf.grw.utfmaps.modelo.departamento;
 
-import com.utf.grw.utfmaps.modelo.permissao.Permissao;
-import com.utf.grw.utfmaps.modelo.sugestao.Sugestao;
-import com.utf.grw.utfmaps.modelo.usuario.Usuario;
 import java.util.List;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+
+import com.utf.grw.utfmaps.modelo.usuario.Usuario;
 
 /**
  *

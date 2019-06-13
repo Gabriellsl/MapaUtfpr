@@ -22,7 +22,7 @@ public class Logger {
             SendData sd = new SendData(pr.getURI_LOGGER(),pr.getTOKEN_LOGGER());
             sd.POST(log,Log.class);
         } catch (Exception ex) {
-            java.util.logging.Logger.getLogger(Logger.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
     
@@ -33,7 +33,7 @@ public class Logger {
             SendData sd = new SendData(pr.getURI_LOGGER(),pr.getTOKEN_LOGGER());
             sd.POST(log,Log.class);
         } catch (Exception ex) {
-            java.util.logging.Logger.getLogger(Logger.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
     

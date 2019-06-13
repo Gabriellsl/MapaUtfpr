@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     
+    <init-param>
+        <param-name>contextAttribute</param-name>
+        <param-value>org.springframework.web.servlet.FrameworkServlet.
+            CONTEXT.appServlet</param-value>
+    </init-param> 
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -8,6 +14,12 @@
         /WEB-INF/applicationContext-security.xml
         </param-value>
     </context-param>
+
+    <context-param>
+            <param-name>com.sun.faces.expressionFactory</param-name>
+            <param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+    </context-param>
+
     <context-param>
         <param-name>facelets.SKIP_COMMENTS</param-name>
         <param-value>true</param-value>
@@ -15,6 +27,7 @@
     <filter>
             <filter-name>springSecurityFilterChain</filter-name>
             <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+
     </filter>
     <filter-mapping>   
             <filter-name>springSecurityFilterChain</filter-name>
@@ -22,6 +35,8 @@
     </filter-mapping>
     <listener>
             <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+            <!-- <listener-class>com.sun.faces.config.ConfigureListener</listener-class> -->
+
     </listener>
     
     <context-param>
