@@ -20,9 +20,15 @@ public class UserContext {
     public static Usuario getUserContext() {
 
         UsuarioRN usuarioRN = new UsuarioRN();
-        String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        Usuario user = usuarioRN.buscar((long)2);
-        // user = usuarioRN.refresh(user);
-        return user;
+        // String login = SecurityContextHolder.getContext().getAuthentication().getName();
+//        Usuario user = usuarioRN.buscar((long)2);
+//        user = usuarioRN.refresh(user);;;
+        
+           for (Usuario x : usuarioRN.listar()) {
+               System.out.println(x.getIdUsuario());
+        }
+        
+
+        return usuarioRN.listar().get(1);
     }
 }

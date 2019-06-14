@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"  	
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
@@ -43,10 +43,11 @@
             <div class="ui-g image-container">
                 <div class="mapaContent">
                     <h:graphicImage styleClass="map" library="imagens" name="fundoPrincipalPronto2.png"/> 
+                    
                 </div>
                 <h:form>
                     <p:commandLink update=":dialog" action="#{mapaBean.teste('L')}">
-                        <h:graphicImage styleClass="top:14%; left:4%;" class="botao" library="imagens" name="bloco1.png"/> 
+                        <h:graphicImage style="top:14%; left:4%;" styleClass="botao" library="imagens" name="bloco1.png"/> 
                         <f:ajax execute="@form"/>
                     </p:commandLink>
 

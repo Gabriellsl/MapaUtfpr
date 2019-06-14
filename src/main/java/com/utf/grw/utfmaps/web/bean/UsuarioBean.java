@@ -10,6 +10,7 @@ import com.utf.grw.utfmaps.modelo.departamento.DepartamentoRN;
 import com.utf.grw.utfmaps.modelo.usuario.Usuario;
 import com.utf.grw.utfmaps.modelo.usuario.UsuarioRN;
 import com.utf.grw.utfmaps.util.Logger;
+import com.utf.grw.utfmaps.util.UserContext;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -49,6 +50,12 @@ public class UsuarioBean {
         DepartamentoOrigem = this.getDepartamentos();
         deps = new DualListModel<Departamento>(DepartamentoOrigem, DepartamentoDestino);
         departamentos2 = new DualListModel<Departamento>(DepartamentoOrigem2, DepartamentoDestino2);
+        
+        
+                Usuario usuario = UserContext.getUserContext();
+
+                System.out.println(usuario.getLogin());
+        
     }
 
     List<Departamento> DepartamentoOrigem;

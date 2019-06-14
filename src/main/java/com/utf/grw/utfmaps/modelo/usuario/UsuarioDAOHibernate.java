@@ -52,8 +52,15 @@ public class UsuarioDAOHibernate implements UsuarioDAO {
 
     @Override
     public Usuario buscarPorId(Long codigo) {
-        Usuario usuario = manager.find(Usuario.class, codigo);
-        return usuario;
+        Usuario usuario = new Usuario();
+        try{
+            usuario = manager.find(Usuario.class, codigo);
+        }catch(Exception e){
+            usuario = new Usuario();
+        }finally{
+            return usuario;
+        }
+        
     }
 
     @Override

@@ -1,5 +1,8 @@
 package launch;
 
+import com.utf.grw.utfmaps.modelo.usuario.Usuario;
+import com.utf.grw.utfmaps.modelo.usuario.UsuarioRN;
+import com.utf.grw.utfmaps.util.ConexaoHibernate;
 import java.io.File;
 
 import org.apache.catalina.WebResourceRoot;
@@ -10,6 +13,9 @@ import org.apache.catalina.webresources.StandardRoot;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        
+        ConexaoHibernate.getInstance();
+        
         String webappDirLocation = "src/main/webapp/";
         Tomcat tomcat = new Tomcat();
 
@@ -25,8 +31,6 @@ public class Main {
         StandardContext ctx = (StandardContext) tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
         System.out.println("configuring app with basedir: " + new File("./" + webappDirLocation).getAbsolutePath());
 
-        // Declare an alternative location for your "WEB-INF/classes" dir
-        // Servlet 3.0 annotation will work
         File additionWebInfClasses = new File("target/classes");
         WebResourceRoot resources = new StandardRoot(ctx);
         resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/classes",
