@@ -11,7 +11,7 @@
     text-align: center;
 
     content: "after";
-    background: url("../imagens/dead.jpg");
+    background: url("../imagens/backgrouund_1.jpg");
     background-size: auto 100%;
     background-color: rgb(255, 216, 48);
     background-repeat: no-repeat;
@@ -155,13 +155,11 @@
 }
 
 .textApr{
-    color: red;
     margin-left: 3%;
 }
 
 .tituloApr{
     margin-left: 5%;
-    color: blue;
     font-size: 2em;
 }
 
@@ -176,6 +174,7 @@
 
 .subTituloApr{
     font-size: 0.4em;
+    color: #E4A92D;
 }
 
 
@@ -255,6 +254,12 @@ html, body {
     /*    margin-bottom: 20px;*/
     margin-top: 0px;
     text-align: center;
+}
+
+.aprBackground{
+    background-color: #0881CA;
+    height: 100vh;
+    color: white
 }
 
 
