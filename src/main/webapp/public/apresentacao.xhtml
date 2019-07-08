@@ -9,74 +9,69 @@
 
     <ui:composition template="/templates/layoutsuges.xhtml">
         <ui:define name="corpo">
-            <h:head>
-                <title>Detalhes</title>
-                <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" media="screen" />
-                <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/animate.css" media="screen" />
+    <h:head>
+        <title>Detalhes</title>
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" media="screen" />
 
-            </h:head>
-            <style type="text/css">
-                .ui-g div {
-                    background-color: #ededed;
-                    text-align: center;
-                    border: 1px solid #fafafa;
-                }
-            </style>
-
-
-            <div class="aprBackground">
+    </h:head>
+    <style type="text/css">
+        .ui-g div {
+            background-color: #ededed;
+            text-align: center;
+            border: 1px solid #fafafa;
+        }
+    </style>
 
 
-                <p:outputPanel class="aprContainer" >
+    <p:outputPanel>
 
 
 
-                    <div class="ui-g">
-                        <div class="ui-g-6"> 
+        <div class="ui-g">
+            <div class="ui-g-6"> 
 
-                        </div>
-
-
-
-                    </div>
-
-
-                    <div class="ui-grid conteudoApr animated fadeInUp">
-                        <div class="ui-grid-row conteudoApr">
-                            <!--                <div class="ui-grid-col-4"></div>-->
-                            <div class="ui-grid-col-1"> </div>
-                            <div class="ui-grid-col-5">
-                                <div class="textApr">
-
-
-                                    <div class="tituloApr">
-                                        <h:outputText value="#{mapaBean.selecionado.nomeDep}"></h:outputText>
-                                    </div>
-                                    <div class="subTituloApr">
-                                        <h:outputText value="#{mapaBean.selecionado.nomeDepExt}"></h:outputText><br></br>
-                                    </div>
-                                    <div class="descricaoApr">
-
-
-
-                                        <h:outputText value="Descrição:#{mapaBean.selecionado.descricao}"></h:outputText><br></br>
-                                        <h:outputText value="Horário de abertura:#{mapaBean.selecionado.horaAbre}"></h:outputText><br></br>
-                                        <h:outputText value="Horário de fechamento:#{mapaBean.selecionado.horaFecha}"></h:outputText><br></br>
-                                        <h:outputText value="Responsável:#{mapaBean.selecionado.localizacao}"></h:outputText><br></br>
-                                        <h:outputText value="Responsável:#{mapaBean.selecionado.responsavel}"></h:outputText><br></br>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="ui-grid-col-5">
-                                <h:graphicImage style="width: 100%" library="imagens" name="apreImg.jpg"/> 
-                            </div>
-                            <div class="ui-grid-col-1"> </div>
-                        </div>
-                    </div>
-
-                </p:outputPanel>
             </div>
+
+
+
+        </div>
+
+
+        <div class="ui-grid conteudoApr">
+            <div class="ui-grid-row conteudoApr">
+                <!--                <div class="ui-grid-col-4"></div>-->
+                <div class="ui-grid-col-1"> </div>
+                <div class="ui-grid-col-5">
+                    <div class="textApr">
+
+                        
+                        <div class="tituloApr">
+                            <h:outputText value="#{mapaBean.selecionado.nomeDep}"></h:outputText>
+                        </div>
+                        <div class="subTituloApr">
+                            <h:outputText value="#{mapaBean.selecionado.nomeDepExt}"></h:outputText><br></br>
+                        </div>
+                        <div class="descricaoApr">
+                            
+                            
+                                
+                            
+                            <h:outputText value="Horário de abertura:#{mapaBean.selecionado.horaAbre}"></h:outputText><br></br>
+                            <h:outputText value="Horário de fechamento:#{mapaBean.selecionado.horaFecha}"></h:outputText><br></br>
+                            <h:outputText value="Responsável:#{mapaBean.selecionado.responsavel}"></h:outputText><br></br>
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-grid-col-5">
+                    <h:graphicImage style="width: 100%" library="imagens" name="academia2.png"/> 
+                </div>
+                <div class="ui-grid-col-1"> </div>
+            </div>
+        </div>
+
+    </p:outputPanel>
         </ui:define>
     </ui:composition>
 

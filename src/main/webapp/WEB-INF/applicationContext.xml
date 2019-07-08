@@ -10,5 +10,5 @@
     p:driverClassName="com.mysql.jdbc.Driver"
     p:url="jdbc:mysql://localhost:3306/mapautf"
     p:username="root"
-    p:password="1997"/> 
+    p:password="utfprsh"/> 
 </beans>

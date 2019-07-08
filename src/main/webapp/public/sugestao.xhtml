@@ -12,12 +12,12 @@
     <h:head>
         <title>Sugestões</title>
         <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/animate.css" media="screen" />
-        
     </h:head>
     <h:body>
 
-        <div class="sugestaoContainer animated tada">
+        <div class="sugestaoContainer">
+
+
             <p:outputPanel>
                 <div class="ui-grid sugestao">
 
@@ -26,8 +26,8 @@
                     <h:form class="teste2">
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-1"></div>
-                            <div class="ui-grid-col-10 sugInput  animated tada"> 
-                                <p:inputTextarea placeholder="Escreva a sua sugestão aqui..." class="sugText" style="width: 90%; height: 60%" value="#{sugestaoBean.sugestao.sugestao}" rows="6" cols="33" />
+                            <div class="ui-grid-col-10 sugInput"> 
+                                <p:inputTextarea class="sugText" style="width: 90%; height: 60%" value="#{sugestaoBean.sugestao.sugestao}" rows="6" cols="33" />
                                 <h:commandButton class="sugButton" action="#{sugestaoBean.salvar()}" value="Salvar"/>
 
                             </div>
