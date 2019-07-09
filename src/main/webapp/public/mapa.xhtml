@@ -61,7 +61,7 @@
                             <h:graphicImage class="map" library="imagens" name="fundoPrincipalPronto2.png"/> 
                         </div>
                         <h:form>
-                            <p:commandLink  update=":dialog" action="#{mapaBean.teste('L')}">
+                            <p:commandLink  update=":dialog" action="#{mapaBean.teste('A')}">
                                 <h:graphicImage style="top:14%; left:4%;" class="botao" library="imagens" name="bloco1.png"/> 
                                 <f:ajax execute="@form"/>
                             </p:commandLink>
@@ -93,8 +93,10 @@
                             <h:graphicImage style="top:34%; left:48.6%; width: 5%;" class="botao" library="imagens" name="bloco15.png"/> 
                             <h:graphicImage style="top:46%; left:41.9%; width: 5%;" class="botao" library="imagens" name="bloco16.png"/> 
                             <h:graphicImage style="top:46%; left:48.6%; width: 5%;" class="botao" library="imagens" name="bloco17.png"/> 
-
-                            <h:graphicImage style="top:25%; left:55.8%; width: 12%; height: 11%" class="botao" library="imagens" name="bloco21.png"/> 
+                            <p:commandLink update=":dialog" action="#{mapaBean.teste('L')}">
+                                <h:graphicImage style="top:25%; left:55.8%; width: 12%; height: 11%" class="botao" library="imagens" name="bloco21.png"/> 
+                                <f:ajax execute="@form"/>
+                            </p:commandLink>
                             <h:graphicImage style="top:25%; left:68.2%; width: 12%; height: 11%" class="botao" library="imagens" name="bloco22.png"/> 
                             <h:graphicImage style="top:45%; left:58.6%; width: 9%;" class="botao" library="imagens" name="bloco23.png"/> 
                             <h:graphicImage style="top:45%; left:69.6%; width: 12%; height: 9%;" class="botao" library="imagens" name="bloco24.png"/> 
