@@ -5,8 +5,11 @@
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
-    background: #191919;
-    text-align:'center'
+    background: rgba(255,255,255,0.1);
+    text-align:'center';
+    /* border-style: solid;
+     border-width: 2px; 
+    border-color: rgba(0,0,0,0.6); */
 }
 
 .box input[type='text'], .box input[type='password']{
@@ -15,7 +18,7 @@
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #3496db;  
+    border: 2px solid rgba(0,0,0,0.6);;  
     padding: 14px 10px;
     outiline:none;
     color: white;
@@ -43,7 +46,103 @@
     border-radius: 24px;
     transition: 0.25s;
     cursor: pointer;
+    font-weight: 900;
 }
 .submit:hover{
     background: #2ecc71;
 }
+
+
+canvas {
+    display: block;
+    height: 100vh;
+}
+
+body{
+    margin: 0 !important;
+    overflow: hidden;
+    
+}
+
+
+
+
+
+
+
+
+.box2{
+	width: 300px; height: 200px;
+	background-color: #DDFFF7;
+	position: relative;
+	box-shadow: 10px 10px 42px 0 rgba(0,0,0,0.75);
+}
+.box2:after, .box2:before{
+	mix-blend-mode:multiply;
+	filter:none;
+	z-index: -1;
+	content:'';
+	width:calc(100% + (50px * 2));
+	height:calc(100% + (50px * 2));
+	position: absolute;
+	display: block;
+	animation: border 10s ease-in-out infinite;
+	transform:translateX(-50px) translateY(-50px);
+}
+@keyframes border {
+  0%, 100% {
+    -webkit-clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
+            clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
+  }
+  50% {
+    -webkit-clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
+            clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
+  }
+}
+
+.box2:after{
+	animation-delay: -5s;
+	background-color: #93e1d8;
+	clip-path: polygon(0 0, calc(100% - (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 100%, calc(0% + (33.3333333333px)) calc(100% - (33.3333333333px)));
+}
+.box2:before {
+	background-color: #AA4465;
+	  clip-path: polygon(calc(0% + (33.3333333333px)) calc(0% + (33.3333333333px)), 100% 0, calc(100% - (33.3333333333px)) calc(100% - (33.3333333333px)), 0 100%);
+}
+
+.box2:hover:after{
+	animation-delay: -0.1s;
+}
+.box2:hover:before, .box:hover:after {
+
+          animation-duration: 0.2s;
+}
+
+
+
+
+
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(0,0,0,0.6);
+    color: white;
+    opacity: 1; /* Firefox */
+    font-weight: bold;
+    font-weight: 900;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(0,0,0,0.6);
+    color: white;
+    font-weight: 400;
+    font-weight: bold;
+    font-weight: 900;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(0,0,0,0.6);
+    color: white;
+    font-weight: bold;
+    font-weight: 900;
+  }

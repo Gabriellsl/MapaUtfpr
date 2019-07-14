@@ -6,9 +6,10 @@
         xmlns:p="http://primefaces.org/ui">
     
      <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/login.css" media="screen" />
+     <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/resources/css/animate.css" media="screen" />
 
     
-	<h:panelGroup rendered="#{!empty param.login_error}"> 
+<!--	<h:panelGroup rendered="#{!empty param.login_error}"> 
 		<span style="color:red"> Erro ao efetuar o login.</span><br />
 		<br/>
                 <h:outputText id="display" value="#{SPRING_SECURITY_LAST_EXCEPTION.message}" />
@@ -25,8 +26,29 @@
 		document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}"; 
 	</script>
 	</form>
-    <!--</h:body> -->
-    
+    </h:body> -->
+     <h:body style="border: 0;">
+     <canvas id="c">
+     </canvas>
+     <div class="animated fadeIn">
+        <form class="box " id="login" method="post" action="#{request.contextPath}/j_spring_security_check"> 
+
+            <input type='text' name='j_username' placeholder="Username"/>
+            <input type='password' name='j_password' placeholder="Password"/>
+            <p:commandButton class="submit" id ='submit' value="Logar" type="submit" icon="pi pi-check" />
+
+
+            <script>
+                    document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}"; 
+            </script>
+        </form>
+     </div>
+
+     
+     </h:body>
+     <h:outputScript library="js" name="login.js" target="body" />
+    <script src="#{facesContext.externalContext.requestContextPath}/resources/javascript/login.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/1.0.0/anime.min.js"/>
 </html>
 
 
