@@ -64,21 +64,18 @@ public class UsuarioBean {
     private String estadoTela = "buscar";//Inserir, Editar, Buscar
 
     public void selected() {
-        //System.out.println("selecionou !");
         this.editado = this.selecionado;
     }
 
     public void create() {
         List<Departamento> departamentos = new ArrayList<Departamento>();
         departamentos = this.getDepartamentos();
-        System.out.println("Nome da primeira Departamento: " + departamentos.get(0).getNomeDep());
         this.usuario.setDepartamentos(this.deps.getTarget());
 
         mudarParaBusca();
         UsuarioRN usuarioRN = new UsuarioRN();
         usuarioRN.salvar(this.usuario);
 
-        System.out.println(this.usuario.getNome() + " criado com sucesso !");
         this.lista = null;
         this.usuario = new Usuario();
     }
@@ -89,7 +86,6 @@ public class UsuarioBean {
             usuarioRN.excluir(this.selecionado);
         } catch (Error e) {
             Logger.save(this.getClass(), e.getMessage());
-            System.out.println("Houve um erro ao excluir um Usuario: " + e);
         }
         this.lista = null;
     }
@@ -100,7 +96,6 @@ public class UsuarioBean {
         //mudarParaEdita();
         UsuarioRN usuarioRN = new UsuarioRN();
         usuarioRN.atualizar(this.selecionado);
-        System.out.println(this.selecionado.getNome() + " alterado com sucesso !" + " ID: " + this.selecionado.getIdUsuario());
         this.lista = null;
     }
 
@@ -168,11 +163,7 @@ public class UsuarioBean {
     }
 
     public void mudarParaEdita() {
-        /*System.out.println("usuario: "+this.selecionado.getNome()+" - codigo "+this.selecionado+"\n Departamentos: ");
-        for (Departamento departamento : this.selecionado.getDepartamentos()) {
-            System.out.println(departamento.getNomeDep() + " - codigo: "+departamento);
-        }
-        */
+
         UsuarioRN usuarioRN = new UsuarioRN();
         this.selecionado = usuarioRN.refresh(this.selecionado);
         

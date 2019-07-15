@@ -47,7 +47,6 @@ public class MapaBean implements Serializable{
     
     
     public void teste(String bloco){
-        System.out.println("Testando..."+ bloco); 
         //this.carregar = true;
         this.departamentos = departamentoRN.buscarPorLocalizacao(bloco);
         this.bloco = bloco;

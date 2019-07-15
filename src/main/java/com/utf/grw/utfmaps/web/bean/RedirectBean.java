@@ -40,7 +40,6 @@ public class RedirectBean {
             FacesContext.getCurrentInstance().getExternalContext().redirect(path);
         } catch (IOException e) {
             Logger.save(this.getClass(), e.getMessage());
-            System.out.println(e.getMessage());
         }
     }
 

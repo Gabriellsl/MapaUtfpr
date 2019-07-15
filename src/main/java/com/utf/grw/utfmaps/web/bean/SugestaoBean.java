@@ -29,7 +29,6 @@ public class SugestaoBean {
     
     public void salvar(){
         SugestaoRN sugestaoRN = new SugestaoRN();
-        System.out.println("a descrição é:  "+this.sugestao.getSugestao());
         sugestaoRN.salvar(this.sugestao);
     }
 

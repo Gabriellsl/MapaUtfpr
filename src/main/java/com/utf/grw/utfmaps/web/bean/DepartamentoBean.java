@@ -68,9 +68,7 @@ public class DepartamentoBean {
     private String estadoTela = "buscar";//Inserir, Editar, Buscar
 
     public void selected() {
-        //System.out.println("selecionou !");
         this.editado = this.selecionado;
-        //System.out.println("$$$$   "+this.editado.getNomeDep()+" id "+this.editado.getIdDepartamento()+"   id selecionado: "+this.selecionado.getIdDepartamento());
     }
 
     public void create() {
@@ -82,7 +80,6 @@ public class DepartamentoBean {
         DepartamentoRN departamentoRN = new DepartamentoRN();
         departamentoRN.salvar(this.departamento);
 
-        System.out.println(this.departamento.getNomeDep() + " criado com sucesso !");
         this.lista = null;
         this.departamento = new Departamento();
     }
@@ -93,7 +90,6 @@ public class DepartamentoBean {
             departamentoRN.excluir(this.selecionado);
         } catch (Error e) {
             Logger.save(this.getClass(), e.getMessage());
-            System.out.println("Houve um erro ao excluir um departamento: " + e);
         }
         this.lista = null;
     }
@@ -105,18 +101,14 @@ public class DepartamentoBean {
         DepartamentoRN departamentoRN = new DepartamentoRN();
         if(this.nomeUsuario.equals("root")){
             this.selecionado.setUsuarios(this.getUsus2().getTarget());
-        System.out.println("caiu no root aqui");
         }else{
-            System.out.println(this.selecionado.getNomeDep()+"   fooooooi !!!!");
         }
         //mudarParaEdita();
         
         departamentoRN.atualizar(this.selecionado);
-        System.out.println(this.selecionado.getNomeDep() + " alterado com sucesso !" + " ID: " + this.selecionado.getIdDepartamento());
         
         this.lista = null;
         }catch(Error e){
-            System.out.println(e);
         }
     }
 
