@@ -25,7 +25,7 @@ import org.primefaces.model.DualListModel;
  * @author Gabriellsl
  */
 @ManagedBean(name = "departamentoBean")
-@RequestScoped
+@ViewScoped
 public class DepartamentoBean {
 
     //picklist
@@ -44,6 +44,7 @@ public class DepartamentoBean {
 
         this.UsuarioOrigem2 = new ArrayList<Usuario>();
         this.UsuarioDestino2 = new ArrayList<Usuario>();
+        this.ususSelecionado = new ArrayList<Usuario>();
 
         UsuarioOrigem = this.getUsuarios();
         usus = new DualListModel<Usuario>(UsuarioOrigem, UsuarioDestino);
@@ -53,6 +54,7 @@ public class DepartamentoBean {
 
     }
 
+    List<Usuario> ususSelecionado;
     List<Usuario> UsuarioOrigem;
     List<Usuario> UsuarioDestino;
 
@@ -98,12 +100,24 @@ public class DepartamentoBean {
 
     public void update() {
         
-        this.selecionado.setUsuarios(this.getUsus2().getTarget());
-        //mudarParaEdita();
+        try{
+            
         DepartamentoRN departamentoRN = new DepartamentoRN();
+        if(this.nomeUsuario.equals("root")){
+            this.selecionado.setUsuarios(this.getUsus2().getTarget());
+        System.out.println("caiu no root aqui");
+        }else{
+            System.out.println(this.selecionado.getNomeDep()+"   fooooooi !!!!");
+        }
+        //mudarParaEdita();
+        
         departamentoRN.atualizar(this.selecionado);
         System.out.println(this.selecionado.getNomeDep() + " alterado com sucesso !" + " ID: " + this.selecionado.getIdDepartamento());
+        
         this.lista = null;
+        }catch(Error e){
+            System.out.println(e);
+        }
     }
 
     public Departamento getDepartamento() {
@@ -177,6 +191,7 @@ public class DepartamentoBean {
         
         DepartamentoRN departamentoRN = new DepartamentoRN();
         this.selecionado = departamentoRN.refresh(this.selecionado);
+        this.ususSelecionado = this.selecionado.getUsuarios();
         
         this.UsuarioOrigem2 = this.getUsuarios();
         this.setUsuarioDestino2(this.selecionado.getUsuarios());
