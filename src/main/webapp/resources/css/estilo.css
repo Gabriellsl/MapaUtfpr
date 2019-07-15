@@ -143,11 +143,13 @@
 
 .textApr{
     margin-left: 3%;
+    font-size: 1.5em;
 }
 
 .tituloApr{
     margin-left: 5%;
-    font-size: 2em;
+    font-size: 1.8em;
+    font-family: "Fredericka the Great";
 }
 
 .conteudoApr{
@@ -157,11 +159,14 @@
 .descricaoApr{
     margin-top: 10%;
     font-size: 0.6em;
+    font-family: "Fredericka the Great";
+
 }
 
 .subTituloApr{
-    font-size: 0.4em;
+    font-size: 0.5em;
     color: #E4A92D;
+    font-family: "Chewy";
 }
 
 
@@ -240,7 +245,7 @@ html, body {
 .divConstrast{
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     padding-top: 0px;
 }
 
@@ -251,13 +256,41 @@ html, body {
     /*    margin-bottom: 20px;*/
     margin-top: 0px;
     text-align: center;
+    color: #fecc01;;
+    padding-top: 18px;
+    font-family: "Fredericka the Great";
+    font-size: 2.1em;
+}
+
+.headerrh:hover{
+    transform:scale(1.08);
+    transition-duration: 0.5s;
+}
+
+.subNameMapa{
+    display: inline;
+    font-family: "Fredericka the Great";
     color: white;
 }
 
 .aprBackground{
     background-color: #0881CA;
-    height: 100vh;
+    min-height: 100vh;
     color: white
+}
+
+.descritivos{
+    margin: 2px;
+    margin-left: 20px;
+    font-family: Fredericka the Great;
+    font-size: 0.7em;
+    
+}
+
+.titDescritivos{
+    display: inline;
+    margin: 0;
+    color:#E4A92D;
 }
 
 .logoHeader{

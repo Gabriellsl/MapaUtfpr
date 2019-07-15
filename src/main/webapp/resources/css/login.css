@@ -4,7 +4,7 @@
 
 
 .box{
-    width: 300px;
+    width: 26vw;
     padding: 60px;
     position: absolute;
     top:50%;
@@ -31,9 +31,6 @@
   font-size: 4em;
 }
 .nameContainer{
-  position: absolute;
-  top:5%;
-  left:44%;
   text-align: center;
 }
 
